@@ -3,178 +3,414 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>WALRUS Presale</title>
+  <title>$WALRUS Presale</title>
+
   <style>
-    body{margin:0;font-family:Arial,sans-serif;background:#05070d;color:#fff;text-align:center}
-    .wrap{max-width:860px;margin:0 auto;padding:26px 16px}
-    .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
-      border-radius:18px;padding:18px;margin:16px auto;max-width:720px;text-align:left}
-    h1{margin:10px 0 4px;font-size:48px}
-    .sub{opacity:.8;margin-bottom:14px}
-    .stage{font-size:34px;font-weight:900;color:#1ef7d9;text-align:center;margin:6px 0 12px}
-    .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px 0}
-    .pill{min-width:240px;padding:10px 14px;border-radius:999px;background:rgba(30,247,217,.10);
-      border:1px solid rgba(30,247,217,.30);font-weight:900;text-align:center}
-    .btn{display:block;margin:14px auto 8px;max-width:520px;width:95%;padding:16px 18px;
-      border-radius:16px;background:linear-gradient(#1ef7d9,#71ffe9);color:#041012;
-      font-weight:1000;font-size:24px;text-decoration:none}
-    .muted{opacity:.65;font-size:13px;text-align:center}
-    .box{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);
-      border-radius:14px;padding:12px;font-family:monospace;word-break:break-all}
-    .copy{margin-top:10px;padding:10px 12px;border-radius:14px;border:1px solid rgba(30,247,217,.25);
-      background:rgba(30,247,217,.12);color:#dffef8;font-weight:900;display:inline-block;cursor:pointer}
-    input{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.25);color:#fff;font-weight:900;margin-top:10px}
-    .result{margin-top:10px;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.20);font-weight:900;min-height:48px}
-    .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:10px}
-    .link{padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);color:#fff;text-decoration:none;font-weight:900}
+    :root{
+      --bg:#070a12;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --stroke: rgba(30,247,215,.30);
+      --text:#ffffff;
+      --muted: rgba(255,255,255,.75);
+      --accent:#1ef7d7;
+      --accent2:#7dffe9;
+      --shadow: 0 18px 70px rgba(0,0,0,.55);
+      --radius: 22px;
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      text-align:center;
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    /* background image */
+    .bg{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        linear-gradient(to bottom, rgba(7,10,18,.85), rgba(7,10,18,.92)),
+        url("bg.jpg") center/cover no-repeat;
+      filter: saturate(1.1);
+    }
+    /* glow */
+    .glow{
+      position:fixed;
+      inset:-200px;
+      z-index:-1;
+      background: radial-gradient(circle at 50% 20%, rgba(30,247,215,.22), transparent 60%);
+      pointer-events:none;
+    }
+
+    .wrap{
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 22px 16px 40px;
+    }
+
+    .heroImg{
+      width: min(520px, 92vw);
+      border-radius: 22px;
+      box-shadow: 0 0 0 6px rgba(30,247,215,.12), 0 18px 80px rgba(0,0,0,.65);
+      margin-top: 10px;
+    }
+
+    h1{
+      margin: 18px 0 6px;
+      font-size: 56px;
+      letter-spacing: 1px;
+    }
+    .sub{
+      opacity:.85;
+      margin: 0 0 18px;
+      font-size: 18px;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin: 18px auto;
+      width: min(720px, 92vw);
+      backdrop-filter: blur(10px);
+    }
+
+    .stageTitle{
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--accent);
+      margin: 8px 0 14px;
+    }
+
+    .row{
+      display:flex;
+      gap: 10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin: 10px 0;
+    }
+
+    .pill{
+      min-width: 240px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(30,247,215,.10);
+      border: 1px solid var(--stroke);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin: 16px auto 6px;
+      padding: 16px 26px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      color:#00110e;
+      font-weight: 1000;
+      font-size: 26px;
+      text-decoration:none;
+      box-shadow: 0 18px 50px rgba(30,247,215,.18);
+    }
+    .btn:active{transform: translateY(1px);}
+
+    .sectionTitle{
+      text-align:left;
+      font-size: 18px;
+      margin: 12px 0 10px;
+      opacity:.9;
+      font-weight:900;
+    }
+
+    .walletBox{
+      text-align:left;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      padding: 14px;
+      word-break: break-all;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 15px;
+    }
+
+    .smallBtn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-top: 12px;
+      background: rgba(30,247,215,.10);
+      border: 1px solid var(--stroke);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 900;
+      cursor:pointer;
+    }
+
+    .how{
+      text-align:left;
+      line-height: 1.35;
+      opacity:.92;
+      font-size: 16px;
+    }
+
+    .tip{
+      margin-top: 10px;
+      font-size: 13px;
+      opacity:.78;
+    }
+
+    .note{
+      margin-top: 12px;
+      background: rgba(255,255,255,.04);
+      border: 1px dashed rgba(255,255,255,.16);
+      padding: 12px;
+      border-radius: 14px;
+      font-size: 13px;
+      opacity:.85;
+      text-align:left;
+    }
+
+    .calc{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-start;
+      margin-top: 10px;
+    }
+    input{
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 12px;
+      font-size: 16px;
+      width: 160px;
+    }
+    .calcOut{
+      font-weight: 900;
+      opacity:.95;
+    }
+
+    footer{
+      opacity:.65;
+      font-size: 12px;
+      padding: 18px 10px 26px;
+    }
+
+    a.link{
+      color: var(--accent);
+      text-decoration:none;
+      font-weight:900;
+    }
   </style>
 </head>
 
 <body>
+  <div class="bg"></div>
+  <div class="glow"></div>
+
   <div class="wrap">
+    <img class="heroImg" src="hero.jpg" alt="$WALRUS" />
+
     <h1>$WALRUS</h1>
     <div class="sub">Presale • Built on Solana</div>
 
     <div class="card">
-      <div id="stageTitle" class="stage">Stage 1 Presale</div>
+      <div id="stageTitle" class="stageTitle">Stage 1 Presale</div>
 
       <div class="row">
-        <div class="pill">Stage Price: <span id="stagePrice">$0.0000001</span></div>
-        <div class="pill">Raised: <span id="raisedSol">0.00 SOL</span></div>
+        <div id="pricePill" class="pill">Stage 1 Price: $0.0000001</div>
+        <div id="raisedPill" class="pill">Raised: 0.00 SOL</div>
       </div>
 
       <div class="row">
-        <div class="pill">Next Stage At: <span id="nextStage">1500 SOL</span></div>
+        <div id="nextPill" class="pill">Next Stage at: 1500 SOL</div>
       </div>
 
       <a id="buyBtn" class="btn" href="#">BUY WITH SOL</a>
-      <div class="muted">Opens Phantom / Solflare</div>
 
-      <div style="margin-top:14px;font-weight:1000;opacity:.8">Presale Wallet</div>
-      <div id="walletBox" class="box"></div>
-      <div id="copyBtn" class="copy">📋 Copy Wallet</div>
+      <div class="sectionTitle">Presale Wallet</div>
+      <div id="walletBox" class="walletBox"></div>
+      <button class="smallBtn" id="copyBtn">📋 Copy Wallet</button>
 
-      <div style="margin-top:16px;font-weight:1000;opacity:.8">Estimate Tokens</div>
-      <div class="muted" style="text-align:left">Enter how much SOL you plan to send (uses current stage price).</div>
-      <input id="solInput" type="number" step="0.0001" placeholder="SOL amount (example: 1.5)" />
-      <div id="estimateOut" class="result">Enter SOL amount above.</div>
+      <div class="card" style="margin-top:16px; background: var(--card2);">
+        <div class="sectionTitle" style="margin-top:0;">How to Buy</div>
+        <div class="how">
+          <div>1) Tap <b>BUY WITH SOL</b> (opens Phantom/Solflare)</div>
+          <div>2) Send SOL to the presale wallet above</div>
+          <div>3) Save your Solscan TX link (proof of payment)</div>
+          <div>4) Tokens are distributed after launch</div>
+          <div class="tip"><b>Tip:</b> Don’t send from an exchange. Send from Phantom/Solflare.</div>
+        </div>
 
-      <div class="muted" id="status" style="margin-top:10px">Loading…</div>
+        <div class="sectionTitle">Token Estimate (optional)</div>
+        <div class="how" style="opacity:.85;">
+          This is an <b>estimate</b> only. It does not mean tokens are minted to your wallet yet.
+        </div>
+        <div class="calc">
+          <input id="solInput" type="number" min="0" step="0.01" placeholder="SOL amount" />
+          <div class="calcOut" id="estOut">Estimated tokens: 0</div>
+        </div>
+      </div>
+
+      <div class="note">
+        This page auto-reads the <b>current balance</b> of the presale wallet to calculate “Raised” and Stage.
+        If you move funds out of the wallet, “Raised” will drop.
+      </div>
     </div>
 
-    <div class="links">
-      <a class="link" href="https://x.com/walrusmemecoin" target="_blank" rel="noreferrer">@walrusmemecoin</a>
-      <a class="link" id="solscanLink" href="#" target="_blank" rel="noreferrer">View Wallet (Solscan)</a>
-    </div>
+    <footer>
+      Always verify links. Wallet balance shown is pulled from the Solana network.
+    </footer>
   </div>
 
-  <script>
-    // ===== YOUR SETTINGS =====
-    const PRESALE_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
-    const TOTAL_STAGES = 20;
-    const SOL_PER_STAGE = 1500;
+<script>
+  // ====== SETTINGS YOU CONTROL ======
+  const PRESALE_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
 
-    // Stage 1 = 0.0000001, Stage 2 = 0.0000002, ...
-    const PRICE_STEP_USD = 0.0000001;
+  // Stage rules
+  const STAGES_TOTAL = 20;
+  const SOL_PER_STAGE = 1500; // change this if you ever want
 
-    // Solana RPC
-    const RPC_URL = "https://api.mainnet-beta.solana.com";
+  // Price display: Stage 1 = 0.0000001, Stage 2 = 0.0000002, etc.
+  const PRICE_STEP_USD = 0.0000001;
 
-    // ===== Helpers (safe) =====
-    const el = (id) => document.getElementById(id);
+  // Token estimate: set how many tokens per 1 SOL at Stage 1.
+  // (This is just an estimate calculator, not an on-chain balance.)
+  const TOKENS_PER_SOL_STAGE1 = 10000000; // <-- change to whatever you want
 
-    function formatSol(x){
-      return (Math.floor(x * 100) / 100).toFixed(2);
-    }
+  // RPC endpoint (public Solana RPC). You can replace with Helius/QuickNode later.
+  const RPC = "https://api.mainnet-beta.solana.com";
 
-    // EXACT display like 0.0000001 / 0.0000002 (no scientific notation)
-    function formatUsdTiny(x){
-      return "$" + x.toFixed(7);
-    }
+  // ====== UI ELEMENTS ======
+  const walletBox = document.getElementById("walletBox");
+  const copyBtn = document.getElementById("copyBtn");
+  const buyBtn = document.getElementById("buyBtn");
 
-    function stageFromRaised(sol){
-      const s = Math.floor(sol / SOL_PER_STAGE) + 1;
-      return Math.max(1, Math.min(TOTAL_STAGES, s));
-    }
+  const stageTitle = document.getElementById("stageTitle");
+  const pricePill = document.getElementById("pricePill");
+  const raisedPill = document.getElementById("raisedPill");
+  const nextPill  = document.getElementById("nextPill");
 
-    function stagePrice(stage){
-      return stage * PRICE_STEP_USD;
-    }
+  const solInput = document.getElementById("solInput");
+  const estOut = document.getElementById("estOut");
 
-    function nextThreshold(stage){
-      if(stage >= TOTAL_STAGES) return null;
-      return stage * SOL_PER_STAGE;
-    }
+  // ====== HELPERS ======
+  function formatSOL(x){
+    return (Math.round(x * 100) / 100).toFixed(2);
+  }
 
-    async function getBalanceSOL(address){
-      const body = { jsonrpc:"2.0", id:1, method:"getBalance", params:[address, {commitment:"confirmed"}] };
-      const res = await fetch(RPC_URL, { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(body) });
-      const data = await res.json();
-      const lamports = (data && data.result && typeof data.result.value === "number") ? data.result.value : 0;
-      return lamports / 1e9;
-    }
+  function stageFromRaised(raisedSol){
+    // Stage 1 at 0..1499.99, Stage 2 at 1500..2999.99, etc
+    const raw = Math.floor(raisedSol / SOL_PER_STAGE) + 1;
+    return Math.max(1, Math.min(STAGES_TOTAL, raw));
+  }
 
-    function render(raisedSol){
-      const st = stageFromRaised(raisedSol);
-      const price = stagePrice(st);
-      const next = nextThreshold(st);
+  function priceForStage(stage){
+    // stage 1 => 0.0000001, stage 2 => 0.0000002 ...
+    const p = stage * PRICE_STEP_USD;
+    // Keep 7 decimals after the decimal point
+    return p.toFixed(7);
+  }
 
-      el("stageTitle").textContent = `Stage ${st} Presale`;
-      el("stagePrice").textContent = formatUsdTiny(price);
-      el("raisedSol").textContent = `${formatSol(raisedSol)} SOL`;
+  function nextStageAt(stage){
+    if(stage >= STAGES_TOTAL) return null;
+    return stage * SOL_PER_STAGE; // threshold to reach next stage
+  }
 
-      el("nextStage").textContent = (next === null) ? `Final Stage` : `${next} SOL`;
+  function updateEstimate(stage){
+    const sol = parseFloat(solInput.value || "0");
+    // Optional: increase/decrease tokens per SOL by stage
+    // Example: fewer tokens per SOL each stage (more expensive)
+    const tokensPerSol = TOKENS_PER_SOL_STAGE1 / stage;
+    const est = Math.floor(sol * tokensPerSol);
+    estOut.textContent = "Estimated tokens: " + est.toLocaleString();
+  }
 
-      // Token estimate box uses current stage price
-      const input = parseFloat(el("solInput").value || "0");
-      if(input > 0){
-        const est = input / price; // estimate display only
-        el("estimateOut").textContent = `${input.toFixed(4)} SOL ≈ ${Math.floor(est).toLocaleString()} WALRUS (estimate)`;
-      }else{
-        el("estimateOut").textContent = "Enter SOL amount above.";
-      }
-    }
-
-    async function refresh(){
-      try{
-        el("status").textContent = "Updating on-chain data…";
-        const bal = await getBalanceSOL(PRESALE_WALLET);
-        render(bal);
-        el("status").textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
-      }catch(e){
-        // Never blank
-        render(0);
-        el("status").textContent = "RPC blocked / network issue. Refresh and try again.";
-      }
-    }
-
-    // ===== Init (never blank) =====
-    el("walletBox").textContent = PRESALE_WALLET;
-    el("buyBtn").href = `solana:${PRESALE_WALLET}`;
-    el("solscanLink").href = `https://solscan.io/account/${PRESALE_WALLET}`;
-
-    el("copyBtn").onclick = async () => {
-      try{
-        await navigator.clipboard.writeText(PRESALE_WALLET);
-        el("copyBtn").textContent = "✅ Copied!";
-        setTimeout(()=> el("copyBtn").textContent = "📋 Copy Wallet", 1200);
-      }catch(e){
-        window.prompt("Copy wallet:", PRESALE_WALLET);
-      }
+  async function getWalletBalanceSOL(address){
+    const body = {
+      jsonrpc: "2.0",
+      id: 1,
+      method: "getBalance",
+      params: [address]
     };
 
-    el("solInput").addEventListener("input", async () => {
-      // Re-render using last known stage price (without refetching)
-      // Simple: just call refresh when they type (light)
-      refresh();
+    const res = await fetch(RPC, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
     });
 
-    render(0);
-    refresh();
-    setInterval(refresh, 20000);
-  </script>
+    const data = await res.json();
+    if(!data.result || typeof data.result.value !== "number") throw new Error("RPC error");
+    const lamports = data.result.value;
+    return lamports / 1e9;
+  }
+
+  async function refresh(){
+    walletBox.textContent = PRESALE_WALLET;
+
+    // Wallet deep-link (opens Phantom/Solflare)
+    buyBtn.href = "solana:" + PRESALE_WALLET;
+
+    let raisedSol = 0;
+    try{
+      raisedSol = await getWalletBalanceSOL(PRESALE_WALLET);
+    } catch(e){
+      // if RPC fails, keep UI but show error
+      raisedPill.textContent = "Raised: (RPC error)";
+      return;
+    }
+
+    const stage = stageFromRaised(raisedSol);
+    const price = priceForStage(stage);
+    const nextAt = nextStageAt(stage);
+
+    stageTitle.textContent = `Stage ${stage} Presale`;
+    pricePill.textContent = `Stage ${stage} Price: $${price}`;
+    raisedPill.textContent = `Raised: ${formatSOL(raisedSol)} SOL`;
+
+    if(nextAt === null){
+      nextPill.textContent = "Final Stage (20/20)";
+    } else {
+      nextPill.textContent = `Next Stage at: ${nextAt} SOL`;
+    }
+
+    updateEstimate(stage);
+  }
+
+  // ====== EVENTS ======
+  copyBtn.addEventListener("click", async () => {
+    try{
+      await navigator.clipboard.writeText(PRESALE_WALLET);
+      copyBtn.textContent = "✅ Copied";
+      setTimeout(()=> copyBtn.textContent = "📋 Copy Wallet", 1200);
+    } catch(e){
+      alert("Copy failed. Tap and hold the wallet address to copy.");
+    }
+  });
+
+  solInput.addEventListener("input", async () => {
+    // Update estimate using current stage shown in title
+    const m = stageTitle.textContent.match(/Stage (\d+)/);
+    const stage = m ? parseInt(m[1], 10) : 1;
+    updateEstimate(stage);
+  });
+
+  // initial load + refresh every 20 seconds
+  refresh();
+  setInterval(refresh, 20000);
+</script>
 </body>
 </html>
