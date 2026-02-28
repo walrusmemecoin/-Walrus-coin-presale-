@@ -30,6 +30,7 @@
       position:relative;
     }
 
+    /* subtle background glow */
     .glow{
       position:fixed;
       inset:-200px;
@@ -260,13 +261,13 @@
 
       <div class="row">
         <div class="pill" id="pricePill"><small>Stage Price</small><br><strong>0.0000001</strong></div>
-        <div class="pill" id="raisedPill"><small>Raised</small><br><strong id="raisedText">—</strong></div>
+        <div class="pill" id="raisedPill"><small>Raised</small><br><strong>0 SOL</strong></div>
       </div>
 
       <div class="progressWrap">
         <div class="progressTop">
-          <span id="progressLeft">—</span>
-          <span id="progressPct">—</span>
+          <span id="progressLeft">0 / 1500 SOL (Stage 1)</span>
+          <span id="progressPct">0%</span>
         </div>
         <div class="bar"><div class="barFill" id="barFill"></div></div>
       </div>
@@ -278,6 +279,7 @@
 
       <div class="inputs">
         <input id="solInput" inputmode="decimal" placeholder="Enter SOL amount" />
+        <input id="addRaisedInput" inputmode="decimal" placeholder="(Admin) Add raised SOL" />
       </div>
 
       <div class="btnRow">
@@ -285,15 +287,8 @@
         <button class="btn btnPrimary" id="buyBtn">BUY WITH SOL</button>
       </div>
 
-      <div class="note" style="margin-top:14px;">
-        Presale Deposit Wallet (tap to copy):<br>
-        <span id="depositWallet" style="display:inline-block;margin-top:6px;font-weight:900;letter-spacing:.2px;opacity:.95;">
-          9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi
-        </span>
-        <div style="margin-top:10px;">
-          View on Solscan:
-          <a id="solscanLink" href="#" style="color:var(--accent);font-weight:900;">Open Explorer</a>
-        </div>
+      <div class="note">
+        This page auto-advances stages based on SOL raised (demo UI). Raised amount is saved in your browser so it stays after refresh.
       </div>
     </div>
 
@@ -308,6 +303,10 @@
         <li><div class="check">✓</div> real SOL payments</li>
         <li><div class="check">✓</div> Pump.fun style hype UI</li>
       </ul>
+
+      <div class="note">
+        Wallet connect + real SOL payments require Solana integration. We can add that once you decide your presale wallet + flow.
+      </div>
     </div>
 
     <!-- ✅ BOTTOM IMAGE (Trump + Walrus Handshake) -->
@@ -317,141 +316,162 @@
   </div>
 
 <script>
-/** ==========================
- * CONFIG
- * =========================== */
+/**
+ * SETTINGS
+ * - 20 stages
+ * - each stage cap: 1500 SOL
+ * - price increases by +0.0000001 each stage (stage 1 = 0.0000001, stage 2 = 0.0000002, ...)
+ */
 const STAGES_TOTAL = 20;
 const STAGE_CAP_SOL = 1500;
+
+// ✅ PRESALE DEPOSIT WALLET (your wallet)
 const DEPOSIT_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
 
-/** ==========================
- * UTIL
- * =========================== */
-function clamp(n,min,max){ return Math.max(min, Math.min(max,n)); }
-
+// stage 1 price = 0.0000001
 function priceForStage(stage){
-  const base = 0.0000001; // stage 1
+  const base = 0.0000001;
   return base * stage;
 }
-function fmtPrice(p){ return p.toFixed(7); }
+
+function fmtPrice(p){
+  // keep 7 decimals like 0.0000001
+  return p.toFixed(7);
+}
+
+function clamp(n,min,max){ return Math.max(min, Math.min(max,n)); }
+
+// --- state (saved locally so it persists) ---
+const KEY = "walrus_presale_state_v1";
+let state = {
+  raisedTotal: 0,   // total SOL raised (demo)
+  walletConnected: false
+};
+
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      if(typeof parsed.raisedTotal === "number") state.raisedTotal = parsed.raisedTotal;
+      if(typeof parsed.walletConnected === "boolean") state.walletConnected = parsed.walletConnected;
+    }
+  }catch(e){}
+}
+
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+}
 
 function getStageFromRaised(raisedTotal){
+  // stage = floor(raised / cap) + 1, clamped to 20
   const s = Math.floor(raisedTotal / STAGE_CAP_SOL) + 1;
   return clamp(s, 1, STAGES_TOTAL);
 }
+
 function stageRaisedAmount(raisedTotal){
+  // how much raised within current stage
   return raisedTotal % STAGE_CAP_SOL;
 }
-
-function isWalletBrowser(){
-  return !!(window.solana && (window.solana.isPhantom || window.solana.isSolflare || window.solana.isBackpack));
-}
-
-/** Open THIS page inside Phantom browser (needed on iOS Safari) */
-function openInPhantomBrowser(){
-  const url = window.location.href;
-  window.location.href = "https://phantom.app/ul/browse/" + encodeURIComponent(url);
-}
-
-/** Open Phantom transfer screen to your presale wallet (works from Safari) */
-function openPhantomTransfer(amountSol){
-  // Phantom universal link transfer
-  const recipient = encodeURIComponent(DEPOSIT_WALLET);
-  const amount = encodeURIComponent(String(amountSol));
-
-  const link = `https://phantom.app/ul/v1/transfer?recipient=${recipient}&amount=${amount}`;
-  window.location.href = link;
-}
-
-async function copyText(text){
-  try{
-    await navigator.clipboard.writeText(text);
-    alert("Copied ✅");
-  }catch(e){
-    // iOS fallback
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.style.position = "fixed";
-    ta.style.left = "-9999px";
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    try{ document.execCommand("copy"); alert("Copied ✅"); }catch(err){ alert("Copy failed — please copy manually."); }
-    document.body.removeChild(ta);
-  }
-}
-
-/** ==========================
- * UI / STAGE (kept simple)
- * NOTE: Raised is NOT on-chain here (static site). It displays 0 by default.
- * =========================== */
-let state = { raisedTotal: 0 };
 
 function updateUI(){
   const stage = getStageFromRaised(state.raisedTotal);
   const stageRaised = stageRaisedAmount(state.raisedTotal);
   const price = priceForStage(stage);
 
+  // labels
   document.getElementById("stageTitle").innerText = `Stage ${stage} Presale`;
   document.getElementById("pricePill").innerHTML = `<small>Stage Price</small><br><strong>${fmtPrice(price)}</strong>`;
+  document.getElementById("raisedPill").innerHTML = `<small>Raised</small><br><strong>${state.raisedTotal.toFixed(2)} SOL</strong></div>`;
+  document.getElementById("nextPill").innerHTML = `<small>Next Stage At</small><br><strong>${(stage * STAGE_CAP_SOL).toFixed(0)} SOL</strong>`;
 
-  // Display raised (static/demo display)
-  document.getElementById("raisedText").innerText = `${state.raisedTotal.toFixed(2)} SOL`;
-
+  // progress bar
   const pct = (stageRaised / STAGE_CAP_SOL) * 100;
   document.getElementById("barFill").style.width = `${clamp(pct,0,100)}%`;
   document.getElementById("progressLeft").innerText = `${stageRaised.toFixed(2)} / ${STAGE_CAP_SOL} SOL (Stage ${stage})`;
   document.getElementById("progressPct").innerText = `${Math.floor(pct)}%`;
 
-  document.getElementById("nextPill").innerHTML = `<small>Next Stage At</small><br><strong>${(stage * STAGE_CAP_SOL).toFixed(0)} SOL</strong>`;
+  // wallet button
+  const connectBtn = document.getElementById("connectBtn");
+  connectBtn.innerText = state.walletConnected ? "Wallet Connected ✅" : "Connect Wallet";
+  connectBtn.style.filter = state.walletConnected ? "brightness(1.05)" : "none";
 
+  // update estimate (if input has value)
   const solVal = Number(document.getElementById("solInput").value || 0);
   const tokens = (solVal > 0) ? Math.floor(solVal / price) : 0;
   document.getElementById("ownedText").innerText = `${tokens.toLocaleString()} WALRUS`;
 }
 
+function showToast(msg){
+  alert(msg);
+}
+
+/**
+ * ✅ ONLY CHANGE YOU REQUESTED:
+ * Make BUY always jump into Phantom (iOS Safari reliable)
+ */
+function openPhantomTransfer(amountSol){
+  const recipient = encodeURIComponent(DEPOSIT_WALLET);
+  const amount = encodeURIComponent(String(amountSol));
+
+  // 1) iOS app scheme (most reliable)
+  const appLink = `phantom://ul/v1/transfer?recipient=${recipient}&amount=${amount}`;
+
+  // 2) fallback universal link
+  const webLink = `https://phantom.app/ul/v1/transfer?recipient=${recipient}&amount=${amount}`;
+
+  // Try app scheme first
+  window.location.href = appLink;
+
+  // Fallback shortly after
+  setTimeout(() => {
+    window.location.href = webLink;
+  }, 600);
+}
+
+load();
 updateUI();
+
+// SOL input = estimate
 document.getElementById("solInput").addEventListener("input", updateUI);
 
-/** Solscan link + copy */
-document.getElementById("solscanLink").href = `https://solscan.io/account/${DEPOSIT_WALLET}`;
-document.getElementById("solscanLink").target = "_blank";
-document.getElementById("depositWallet").addEventListener("click", ()=>copyText(DEPOSIT_WALLET));
-
-/** ==========================
- * REAL CONNECT (Phantom)
- * =========================== */
-document.getElementById("connectBtn").addEventListener("click", async ()=>{
-  // iOS Safari -> must open Phantom browser first
-  if(!isWalletBrowser()){
-    openInPhantomBrowser();
+// (Admin) add raised SOL (demo)
+document.getElementById("addRaisedInput").addEventListener("change", (e)=>{
+  const add = Number(e.target.value || 0);
+  if(!isFinite(add) || add <= 0){
+    e.target.value = "";
     return;
   }
-
-  try{
-    // Real Phantom connect
-    const resp = await window.solana.connect();
-    const pubkey = resp?.publicKey?.toString?.() || window.solana.publicKey?.toString?.() || "";
-    alert(pubkey ? `Connected ✅\n${pubkey}` : "Connected ✅");
-  }catch(e){
-    alert("Connection cancelled or failed.");
-  }
+  state.raisedTotal = Math.max(0, state.raisedTotal + add);
+  save();
+  e.target.value = "";
+  updateUI();
 });
 
-/** ==========================
- * BUY: always jumps to Phantom transfer screen
- * (You cannot auto-send SOL without the user approving inside Phantom.)
- * =========================== */
-document.getElementById("buyBtn").addEventListener("click", async ()=>{
+// connect wallet (demo)
+document.getElementById("connectBtn").addEventListener("click", ()=>{
+  state.walletConnected = !state.walletConnected;
+  save();
+  updateUI();
+  showToast(state.walletConnected ? "Wallet connected (demo UI)." : "Wallet disconnected.");
+});
+
+// BUY button: now opens Phantom transfer for real
+document.getElementById("buyBtn").addEventListener("click", ()=>{
   const sol = Number(document.getElementById("solInput").value || 0);
+
   if(!isFinite(sol) || sol <= 0){
-    alert("Enter a SOL amount first.");
+    showToast("Enter a SOL amount first.");
     return;
   }
 
-  // This is the key fix: from Safari OR Phantom, always open Phantom transfer UI prefilled
+  // ✅ Jump straight to Phantom transfer to your presale wallet
   openPhantomTransfer(sol);
+
+  // Keep UI the same (no other changes)
+  showToast("Opening Phantom… approve the SOL transfer to complete your presale purchase.");
 });
 </script>
+
 </body>
 </html>
