@@ -4,327 +4,501 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>$WALRUS Presale</title>
+
   <style>
+    :root{
+      --bg:#05070d;
+      --card:#0c111b;
+      --card2:#0a0f18;
+      --text:#e9eefc;
+      --muted:#b7c1dd;
+      --teal:#00ffd0;
+      --teal2:#00c7a4;
+      --line:rgba(255,255,255,.08);
+      --pill:rgba(0,255,208,.10);
+      --shadow:0 18px 70px rgba(0,0,0,.55);
+      --radius:22px;
+    }
+
+    *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: Arial, sans-serif;
-      background:#070a12;
-      color:#fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 50% -200px, rgba(0,255,208,.18), transparent 55%),
+                  radial-gradient(900px 600px at 10% 20%, rgba(0,199,164,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
       text-align:center;
     }
-    .hero{ padding:28px 16px 10px; }
-    .logo{
-      width:220px;
-      border-radius:18px;
-      box-shadow:0 0 28px rgba(0,255,200,.45);
+
+    .wrap{
+      width:min(920px, 92vw);
+      margin:0 auto;
+      padding:22px 0 70px;
     }
-    h1{ margin:14px 0 6px; font-size:44px; letter-spacing:1px; }
-    .sub{ opacity:.9; font-size:16px; margin-bottom:14px; }
+
+    .hero{
+      padding:10px 10px 0;
+    }
+
+    .banner{
+      width:min(860px, 92vw);
+      margin:0 auto 14px;
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .banner img{
+      width:100%;
+      display:block;
+      height:auto;
+    }
+
+    h1{
+      margin:12px 0 6px;
+      font-size:54px;
+      letter-spacing:2px;
+      font-weight:900;
+    }
+
+    .sub{
+      color:var(--muted);
+      font-size:18px;
+      margin-bottom:16px;
+    }
+
     .card{
-      max-width:560px;
-      margin:14px auto;
-      background:rgba(255,255,255,.06);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.10);
-      border-radius:16px;
-      padding:18px;
-      backdrop-filter: blur(8px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+      margin:16px auto;
+      width:min(760px, 92vw);
       text-align:left;
     }
-    .big{
-      font-size:22px;
-      margin:0;
-      color:#00ffd5;
-      font-weight:800;
+
+    .stageTitle{
       text-align:center;
+      font-size:40px;
+      font-weight:900;
+      color:var(--teal);
+      margin:6px 0 16px;
     }
+
     .row{
       display:flex;
-      gap:10px;
+      gap:14px;
       justify-content:center;
       flex-wrap:wrap;
-      margin-top:10px;
+      margin:8px 0 14px;
     }
+
     .pill{
-      padding:10px 14px;
+      background: rgba(0,255,208,.10);
+      border:1px solid rgba(0,255,208,.28);
+      padding:12px 16px;
       border-radius:999px;
-      background:rgba(0,255,213,.12);
-      border:1px solid rgba(0,255,213,.25);
-      font-weight:700;
-      font-size:14px;
+      font-weight:800;
+      color:#dffef8;
+      min-width: 240px;
       text-align:center;
     }
-    .btn{
-      display:inline-block;
-      margin-top:14px;
-      padding:14px 22px;
-      border-radius:14px;
-      background:#00ffd5;
-      color:#000;
+
+    .bigBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:min(440px, 92%);
+      padding:18px 20px;
+      border-radius:18px;
+      margin:14px auto 12px;
+      background: linear-gradient(180deg, var(--teal), #00f0c2);
+      color:#00110c;
+      font-weight:1000;
+      font-size:28px;
       text-decoration:none;
-      font-weight:900;
-      font-size:16px;
-    }
-    .note{
-      font-size:13px;
-      opacity:.85;
-      margin-top:10px;
-      line-height:1.45;
-      text-align:left;
-    }
-    .mono{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      word-break:break-all;
-      padding:10px 12px;
-      background:rgba(0,0,0,.25);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:12px;
-      margin-top:10px;
-      font-size:13px;
-    }
-    input{
-      width:100%;
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.06);
-      color:#fff;
-      font-size:14px;
-      box-sizing:border-box;
-      margin-top:10px;
-    }
-    .miniBtn{
-      display:inline-block;
-      margin-top:10px;
-      padding:10px 14px;
-      border-radius:12px;
-      background:rgba(0,255,213,.18);
-      border:1px solid rgba(0,255,213,.30);
-      color:#fff;
-      font-weight:800;
+      box-shadow: 0 16px 50px rgba(0,255,208,.18);
+      border:0;
       cursor:pointer;
     }
-    .bg{
-      max-width:760px;
-      margin:18px auto 26px;
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
+
+    .small{
+      font-size:13px;
+      color:rgba(233,238,252,.75);
+      margin-top:6px;
+      text-align:center;
     }
-    .bg img{ width:100%; display:block; }
-    footer{ opacity:.6; font-size:12px; padding:18px 10px 26px; text-align:center; }
-    a{ color:#00ffd5; }
+
+    .label{
+      color:rgba(233,238,252,.75);
+      font-size:16px;
+      margin:14px 0 10px;
+      font-weight:800;
+    }
+
+    .walletBox{
+      background: rgba(0,0,0,.24);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:14px;
+      word-break:break-all;
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size:18px;
+      text-align:left;
+    }
+
+    .copyBtn{
+      margin-top:12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:16px;
+      border:1px solid rgba(0,255,208,.25);
+      background: rgba(0,255,208,.10);
+      color:#dffef8;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .howto p{
+      margin:8px 0;
+      color:rgba(233,238,252,.92);
+      font-weight:700;
+      font-size:16px;
+    }
+
+    .tip{
+      margin-top:10px;
+      padding-top:10px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:rgba(233,238,252,.78);
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media(max-width:720px){
+      .twoCol{ grid-template-columns: 1fr; }
+      h1{ font-size:46px; }
+      .stageTitle{ font-size:34px; }
+    }
+
+    .input{
+      width:100%;
+      padding:14px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      color:var(--text);
+      font-weight:800;
+      outline:none;
+      font-size:15px;
+    }
+
+    .actionBtn{
+      width:100%;
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(0,255,208,.25);
+      background: rgba(0,255,208,.10);
+      color:#dffef8;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .result{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      color:rgba(233,238,252,.92);
+      font-weight:800;
+      font-size:14px;
+      line-height:1.35;
+      min-height:54px;
+    }
+
+    footer{
+      margin-top:18px;
+      opacity:.65;
+      font-size:12px;
+      padding:18px 10px 26px;
+    }
+    a.link{
+      color:var(--teal);
+      font-weight:900;
+      text-decoration:none;
+    }
   </style>
 </head>
 
 <body>
-  <div class="hero">
-    <!-- Top image (your coin image) -->
-    <img class="logo" src="IMG_6472.jpeg" alt="WALRUS" />
-    <h1>$WALRUS</h1>
-    <div class="sub">Presale • Built on Solana</div>
+  <div class="wrap">
+    <div class="hero">
+      <!-- Optional banner image (uses your existing IMG_6472.jpeg) -->
+      <div class="banner">
+        <img src="IMG_6472.jpeg" alt="$WALRUS banner" />
+      </div>
+
+      <h1>$WALRUS</h1>
+      <div class="sub">Presale • Built on Solana</div>
+    </div>
 
     <div class="card">
-      <p class="big" id="stageText">Stage Loading…</p>
+      <div id="stageTitle" class="stageTitle">Stage 1 Presale</div>
 
       <div class="row">
-        <div class="pill" id="priceText">Price Loading…</div>
-        <div class="pill" id="raisedText">Raised Loading…</div>
-        <div class="pill" id="nextText">Next Loading…</div>
+        <div id="stagePricePill" class="pill">Stage 1 Price: $0.0000001</div>
+        <div id="raisedPill" class="pill">Raised: 0.00 SOL</div>
       </div>
 
-      <div style="text-align:center;">
-        <a class="btn" id="buyBtn" href="#">BUY WITH SOL</a>
+      <div class="row">
+        <div id="nextStagePill" class="pill">Next Stage at: 100 SOL</div>
       </div>
 
-      <div class="note">
-        <b>Presale Wallet</b>
-        <div class="mono" id="walletText"></div>
-        <button class="miniBtn" onclick="copyWallet()">📋 Copy Wallet</button>
-        <span id="copyStatus" style="margin-left:10px;"></span>
+      <!-- BUY button -->
+      <a id="buyBtn" class="bigBtn" href="#" rel="noopener">BUY WITH SOL</a>
+      <div class="small">Tip: This opens Phantom/Solflare with the presale wallet prefilled.</div>
 
-        <div style="margin-top:14px;">
-          <b>How to Buy</b><br/>
-          1) Tap <b>BUY WITH SOL</b> (opens Phantom/Solflare)<br/>
-          2) Send SOL to the presale wallet above<br/>
-          3) Save your Solscan TX link (proof of payment)<br/>
-          4) Tokens are airdropped after launch<br/>
-          <small>Tip: Don’t send from an exchange. Send from Phantom/Solflare.</small>
+      <div class="label">Presale Wallet</div>
+      <div id="walletBox" class="walletBox">9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi</div>
+
+      <button id="copyWalletBtn" class="copyBtn" type="button">📋 Copy Wallet</button>
+
+      <div class="card howto" style="margin-top:16px;">
+        <h2 style="margin:4px 0 10px; text-align:center;">How to Buy</h2>
+        <p>1) Tap <b>BUY WITH SOL</b> (opens Phantom/Solflare)</p>
+        <p>2) Send SOL to the presale wallet above</p>
+        <p>3) Save your Solscan TX link (proof of payment)</p>
+        <p>4) Tokens are distributed after launch (see official announcements)</p>
+        <div class="tip">Tip: Don’t send from an exchange. Send from Phantom/Solflare.</div>
+      </div>
+
+      <div class="twoCol">
+        <div class="card" style="margin:0;">
+          <h3 style="margin:4px 0 10px; text-align:center;">Check Your Contribution</h3>
+          <input id="buyerWalletInput" class="input" placeholder="Paste your Solana wallet address (your sending wallet)" />
+          <button id="checkBtn" class="actionBtn" type="button">Check</button>
+          <div id="checkResult" class="result">
+            Paste your wallet, then tap Check. We’ll total SOL sent to the presale wallet (on-chain).
+          </div>
+        </div>
+
+        <div class="card" style="margin:0;">
+          <h3 style="margin:4px 0 10px; text-align:center;">Official Links</h3>
+          <div style="font-weight:900; margin-top:6px;">
+            Website: <span style="opacity:.85;">walrusmemecoin.com</span>
+          </div>
+          <div style="margin-top:10px; font-weight:900;">
+            X: <a class="link" href="https://x.com/walrusmemecoin" target="_blank" rel="noopener">@walrusmemecoin</a>
+          </div>
+          <div style="margin-top:10px; font-weight:900;">
+            Solscan Wallet:
+            <a id="solscanLink" class="link" href="#" target="_blank" rel="noopener">View</a>
+          </div>
+          <div style="margin-top:10px; font-size:13px; opacity:.8; font-weight:800;">
+            Always verify links from official accounts.
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <div style="text-align:center; font-weight:900;">Your Estimated Tokens</div>
-      <div class="note">
-        Enter how much SOL you sent and we estimate your WALRUS allocation at the <b>current stage price</b>.
-      </div>
-
-      <input id="solInput" type="number" step="0.0001" placeholder="Enter SOL you sent (example: 1.5)" />
-      <button class="miniBtn" onclick="calcTokens()">Calculate</button>
-      <div class="mono" id="tokenResult">Enter SOL to calculate…</div>
-
-      <div class="note">
-        This is an estimate. Exact allocation is confirmed after presale close.
-      </div>
-    </div>
-
-    <div class="card">
-      <div style="text-align:center; font-weight:900;">Official Links</div>
-      <div class="note" style="text-align:center;">
-        X: <a href="https://x.com/walrusmemecoin" target="_blank">@walrusmemecoin</a><br/>
-        Launch after Stage 20 🚀
-      </div>
-    </div>
-
-    <!-- Background image -->
-    <div class="bg">
-      <img src="IMG_6473.jpeg" alt="Background" />
-    </div>
-
-    <footer>© 2026 $WALRUS</footer>
+    <footer>
+      This page displays on-chain info (Raised SOL) from the presale wallet. Always verify addresses and transactions.
+    </footer>
   </div>
 
   <script>
-    // =========================
-    // EDIT THESE SETTINGS ONLY
-    // =========================
-    const DEPOSIT_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
-    const SOL_PER_STAGE = 100; // every 100 SOL raised = next stage
-    const MAX_STAGE = 20;
+    /***********************
+     * SETTINGS YOU CAN EDIT
+     ***********************/
+    const PRESALE_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
 
-    // Stage 1..20 prices (edit if you want)
-    // These are USD per token (your marketing price ladder).
-    const stagePrices = [
-      0.00000010, // 1
-      0.00000011, // 2
-      0.00000012, // 3
-      0.00000013, // 4
-      0.00000014, // 5
-      0.00000015, // 6
-      0.00000017, // 7
-      0.00000019, // 8
-      0.00000022, // 9
-      0.00000025, // 10
-      0.00000029, // 11
-      0.00000034, // 12
-      0.00000040, // 13
-      0.00000047, // 14
-      0.00000055, // 15
-      0.00000064, // 16
-      0.00000074, // 17
-      0.00000085, // 18
-      0.00000097, // 19
-      0.00000110  // 20
-    ];
+    // Stage rules
+    const STAGES_TOTAL = 20;
+    const SOL_PER_STAGE = 100; // Stage 1 = 0-99.999..., Stage 2 = 100-199.999..., etc
 
-    // Token estimate:
-    // Tokens ≈ (SOL sent * SOL/USD) / (USD per token at current stage)
-    let solUsdFallback = 150; // used if CoinGecko fails
+    // Price display (USD) – starts at $0.0000001 and increases each stage by a multiplier
+    const STAGE1_PRICE_USD = 0.0000001;
+    const PRICE_MULTIPLIER = 1.20; // 20% increase each stage (change if you want)
 
-    // Solana RPC (public). You can switch later to Helius/QuickNode.
+    // Public Solana RPC (fine for light use)
     const RPC_URL = "https://api.mainnet-beta.solana.com";
 
-    async function getSolBalance(pubkey) {
+    /***********************
+     * HELPERS
+     ***********************/
+    function formatSOL(x){
+      return (Math.round(x * 100) / 100).toFixed(2);
+    }
+
+    function stageFromRaisedSOL(raised){
+      const s = Math.floor(raised / SOL_PER_STAGE) + 1;
+      return Math.min(Math.max(s, 1), STAGES_TOTAL);
+    }
+
+    function stagePriceUSD(stage){
+      // stage 1 = base, stage 2 = base * mult, etc
+      return STAGE1_PRICE_USD * Math.pow(PRICE_MULTIPLIER, (stage - 1));
+    }
+
+    function formatUSDPrice(x){
+      // Show small values nicely (no scientific notation)
+      // For your starting price, 7 decimals after leading zeros is good.
+      if (x < 0.0001) return x.toFixed(7);       // 0.0000001 -> "0.0000001"
+      if (x < 0.01)   return x.toFixed(6);
+      if (x < 1)      return x.toFixed(4);
+      return x.toFixed(2);
+    }
+
+    async function rpc(method, params){
       const res = await fetch(RPC_URL, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          jsonrpc: "2.0",
-          id: 1,
-          method: "getBalance",
-          params: [pubkey]
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jsonrpc:"2.0", id:1, method, params })
       });
       const data = await res.json();
-      const lamports = data?.result?.value ?? 0;
+      if (data.error) throw new Error(data.error.message || "RPC error");
+      return data.result;
+    }
+
+    async function getWalletBalanceSOL(address){
+      const result = await rpc("getBalance", [address]);
+      const lamports = result.value || 0;
       return lamports / 1e9;
     }
 
-    function computeStage(totalSol) {
-      const stage = Math.min(MAX_STAGE, Math.max(1, 1 + Math.floor(totalSol / SOL_PER_STAGE)));
-      return stage;
+    // Sum SOL transfers from a buyer wallet to PRESALE_WALLET by scanning buyer signatures
+    // NOTE: This can be slow if they have tons of history. We limit to recent N.
+    async function getBuyerSentSOLToPresale(buyerAddress, limit=40){
+      const sigs = await rpc("getSignaturesForAddress", [buyerAddress, { limit }]);
+      let total = 0;
+
+      for (const s of sigs){
+        const tx = await rpc("getTransaction", [s.signature, { maxSupportedTransactionVersion: 0 }]);
+        if (!tx || !tx.transaction) continue;
+
+        const message = tx.transaction.message;
+        const accountKeys = message.accountKeys || [];
+        const meta = tx.meta;
+
+        // We need pre/post balances and find transfers where PRESALE_WALLET balance increases
+        // Simplest heuristic:
+        // If PRESALE_WALLET is in accountKeys, compute delta in lamports for that key
+        const idx = accountKeys.findIndex(k => (typeof k === "string" ? k : k.pubkey) === PRESALE_WALLET);
+        if (idx === -1) continue;
+
+        const pre = (meta.preBalances && meta.preBalances[idx]) ? meta.preBalances[idx] : 0;
+        const post = (meta.postBalances && meta.postBalances[idx]) ? meta.postBalances[idx] : 0;
+
+        const delta = post - pre; // lamports gained by presale wallet
+        if (delta > 0){
+          // confirm buyerAddress is also involved (it is, because we searched buyerAddress signatures),
+          // so count it
+          total += delta / 1e9;
+        }
+      }
+      return total;
     }
 
-    async function getSolUsd() {
+    /***********************
+     * INIT UI
+     ***********************/
+    const walletBox = document.getElementById("walletBox");
+    const buyBtn = document.getElementById("buyBtn");
+    const solscanLink = document.getElementById("solscanLink");
+
+    walletBox.textContent = PRESALE_WALLET;
+    buyBtn.href = `solana:${PRESALE_WALLET}`; // opens wallet with address prefilled
+    solscanLink.href = `https://solscan.io/account/${PRESALE_WALLET}`;
+
+    // Copy wallet
+    document.getElementById("copyWalletBtn").addEventListener("click", async () => {
       try{
-        const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
-        const j = await r.json();
-        const v = j?.solana?.usd;
-        if (typeof v === "number" && v > 0) return v;
-      }catch(e){}
-      return solUsdFallback;
-    }
+        await navigator.clipboard.writeText(PRESALE_WALLET);
+        alert("Wallet copied!");
+      }catch(e){
+        alert("Couldn’t copy automatically. Tap and hold the wallet address to copy.");
+      }
+    });
 
-    function fmt(n, decimals=2) {
-      return Number(n).toFixed(decimals);
-    }
+    // Live raised + stage auto-update
+    async function refreshRaisedAndStage(){
+      try{
+        const raised = await getWalletBalanceSOL(PRESALE_WALLET);
+        const stage = stageFromRaisedSOL(raised);
 
-    async function updatePresaleUI() {
-      try {
-        // wallet text + buy button
-        document.getElementById("walletText").textContent = DEPOSIT_WALLET;
-        document.getElementById("buyBtn").href = `solana:${DEPOSIT_WALLET}`;
+        const nextThreshold = stage * SOL_PER_STAGE;
+        const price = stagePriceUSD(stage);
 
-        const totalSol = await getSolBalance(DEPOSIT_WALLET);
-        const stage = computeStage(totalSol);
-        const price = stagePrices[stage - 1];
+        document.getElementById("stageTitle").textContent = `Stage ${stage} Presale`;
+        document.getElementById("raisedPill").textContent = `Raised: ${formatSOL(raised)} SOL`;
+        document.getElementById("nextStagePill").textContent =
+          stage >= STAGES_TOTAL ? `Final Stage Reached` : `Next Stage at: ${nextThreshold} SOL`;
 
-        const nextTarget = Math.min(MAX_STAGE * SOL_PER_STAGE, stage * SOL_PER_STAGE);
-        const nextStageAt = Math.min(MAX_STAGE * SOL_PER_STAGE, (stage) * SOL_PER_STAGE);
+        document.getElementById("stagePricePill").textContent =
+          `Stage ${stage} Price: $${formatUSDPrice(price)}`;
 
-        document.getElementById("stageText").textContent =
-          `Stage ${stage} Presale`;
-
-        document.getElementById("priceText").textContent =
-          `Stage ${stage} Price: $${price}`;
-
-        document.getElementById("raisedText").textContent =
-          `Raised: ${fmt(totalSol, 2)} SOL`;
-
-        const nextText =
-          (stage >= MAX_STAGE)
-          ? `Final Stage Reached`
-          : `Next Stage at: ${(stage * SOL_PER_STAGE).toFixed(0)} SOL`;
-
-        document.getElementById("nextText").textContent = nextText;
-
-      } catch (e) {
-        console.error(e);
-        document.getElementById("stageText").textContent = "Error loading stage (RPC issue)";
+      }catch(err){
+        console.log(err);
+        document.getElementById("raisedPill").textContent = `Raised: (loading...)`;
       }
     }
 
-    async function calcTokens() {
-      const solSent = parseFloat(document.getElementById("solInput").value || "0");
-      if (!solSent || solSent <= 0) {
-        document.getElementById("tokenResult").textContent = "Enter a valid SOL amount.";
+    refreshRaisedAndStage();
+    setInterval(refreshRaisedAndStage, 20000); // update every 20s
+
+    // Buyer contribution checker
+    document.getElementById("checkBtn").addEventListener("click", async () => {
+      const input = document.getElementById("buyerWalletInput").value.trim();
+      const out = document.getElementById("checkResult");
+
+      if (!input || input.length < 32){
+        out.textContent = "Paste a valid Solana wallet address first.";
         return;
       }
 
-      // Use current stage price
-      let totalSol = 0;
-      try { totalSol = await getSolBalance(DEPOSIT_WALLET); } catch(e){}
-      const stage = computeStage(totalSol);
-      const priceUsdPerToken = stagePrices[stage - 1];
+      out.textContent = "Checking recent transactions… (this may take 10–30s)";
+      try{
+        const sent = await getBuyerSentSOLToPresale(input, 40);
 
-      const solUsd = await getSolUsd();
-      const usdValue = solSent * solUsd;
-      const estTokens = usdValue / priceUsdPerToken;
+        // Estimate tokens at CURRENT stage price (this is only an estimate)
+        const raised = await getWalletBalanceSOL(PRESALE_WALLET);
+        const stage = stageFromRaisedSOL(raised);
+        const price = stagePriceUSD(stage);
 
-      document.getElementById("tokenResult").textContent =
-        `At Stage ${stage}, ${fmt(solSent, 4)} SOL (~$${fmt(usdValue, 2)}) ≈ ${Math.floor(estTokens).toLocaleString()} WALRUS`;
-    }
+        // If your token is "USD priced", this is a placeholder estimate.
+        // Replace with your real tokenomics when ready.
+        const estTokens = price > 0 ? (sent / price) : 0;
 
-    function copyWallet() {
-      navigator.clipboard.writeText(DEPOSIT_WALLET);
-      const s = document.getElementById("copyStatus");
-      s.textContent = "✅ Copied";
-      setTimeout(()=>{ s.textContent=""; }, 1500);
-    }
-
-    // Run once + refresh every 30 seconds
-    updatePresaleUI();
-    setInterval(updatePresaleUI, 30000);
+        out.innerHTML = `
+          <div><b>SOL sent to presale wallet (recent scan):</b> ${sent.toFixed(4)} SOL</div>
+          <div style="margin-top:6px; opacity:.85;">
+            <b>Estimated tokens</b> (using current Stage ${stage} price $${formatUSDPrice(price)}): ${Math.floor(estTokens).toLocaleString()}
+          </div>
+          <div style="margin-top:8px; font-size:12px; opacity:.75;">
+            Note: This is an estimate and depends on your actual distribution rules.
+          </div>
+        `;
+      }catch(err){
+        console.log(err);
+        out.textContent = "Couldn’t load transaction data right now. Try again in a moment.";
+      }
+    });
   </script>
 </body>
 </html>
