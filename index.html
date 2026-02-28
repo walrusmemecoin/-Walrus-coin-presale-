@@ -8,240 +8,234 @@
   <style>
     :root{
       --bg:#05070d;
-      --card:#0c111b;
-      --card2:#0a0f18;
-      --text:#e9eefc;
-      --muted:#b7c1dd;
-      --teal:#00ffd0;
-      --teal2:#00c7a4;
-      --line:rgba(255,255,255,.08);
-      --pill:rgba(0,255,208,.10);
-      --shadow:0 18px 70px rgba(0,0,0,.55);
-      --radius:22px;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.55);
+      --aqua:#1ef7d9;
+      --ring: rgba(30,247,217,.35);
+      --shadow: 0 14px 40px rgba(0,0,0,.55);
+      --radius: 18px;
     }
-
-    *{ box-sizing:border-box; }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 50% -200px, rgba(0,255,208,.18), transparent 55%),
-                  radial-gradient(900px 600px at 10% 20%, rgba(0,199,164,.14), transparent 55%),
-                  var(--bg);
-      color:var(--text);
+      font-family: Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 50% -200px, rgba(0,255,208,.14), transparent 55%), var(--bg);
+      color: var(--text);
       text-align:center;
     }
-
     .wrap{
-      width:min(920px, 92vw);
-      margin:0 auto;
-      padding:22px 0 70px;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 26px 16px 36px;
     }
-
-    .hero{
-      padding:10px 10px 0;
-    }
-
-    .banner{
-      width:min(860px, 92vw);
-      margin:0 auto 14px;
-      border-radius:26px;
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .banner img{
-      width:100%;
+    .hero{ padding: 18px 10px 10px; }
+    .logo{
+      width: 260px;
+      max-width: 90vw;
+      border-radius: var(--radius);
+      box-shadow: 0 0 36px var(--ring);
       display:block;
-      height:auto;
+      margin: 0 auto 14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
     }
-
-    h1{
-      margin:12px 0 6px;
-      font-size:54px;
-      letter-spacing:2px;
-      font-weight:900;
-    }
-
-    .sub{
-      color:var(--muted);
-      font-size:18px;
-      margin-bottom:16px;
-    }
+    h1{ margin: 10px 0 6px; font-size: 54px; letter-spacing: 1px; }
+    .sub{ opacity:.85; font-size: 18px; margin-bottom: 14px; }
 
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 22px;
       box-shadow: var(--shadow);
-      padding:22px;
-      margin:16px auto;
-      width:min(760px, 92vw);
+      padding: 22px 18px;
+      margin: 18px auto;
+      max-width: 740px;
       text-align:left;
     }
 
     .stageTitle{
       text-align:center;
-      font-size:40px;
-      font-weight:900;
-      color:var(--teal);
-      margin:6px 0 16px;
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--aqua);
+      margin: 6px 0 14px;
+      text-shadow: 0 0 18px rgba(30,247,217,.25);
     }
 
     .row{
       display:flex;
-      gap:14px;
+      gap: 12px;
       justify-content:center;
       flex-wrap:wrap;
-      margin:8px 0 14px;
+      margin: 6px 0 10px;
     }
-
     .pill{
-      background: rgba(0,255,208,.10);
-      border:1px solid rgba(0,255,208,.28);
-      padding:12px 16px;
-      border-radius:999px;
-      font-weight:800;
-      color:#dffef8;
-      min-width: 240px;
+      background: rgba(30,247,217,.10);
+      border: 1px solid rgba(30,247,217,.30);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      min-width: 220px;
       text-align:center;
     }
+    .pill b{color:#fff}
+    .pill span{color: var(--muted)}
 
-    .bigBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      width:min(440px, 92%);
-      padding:18px 20px;
-      border-radius:18px;
-      margin:14px auto 12px;
-      background: linear-gradient(180deg, var(--teal), #00f0c2);
-      color:#00110c;
-      font-weight:1000;
-      font-size:28px;
+    .next{
+      margin: 10px auto 2px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      display:inline-block;
+      background: rgba(30,247,217,.08);
+      border: 1px solid rgba(30,247,217,.22);
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .btn{
+      display:block;
+      margin: 16px auto 10px;
+      width:min(520px, 95%);
+      padding: 18px 26px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--aqua), #71ffe9);
+      color: #041012;
+      font-weight: 1000;
+      font-size: 26px;
       text-decoration:none;
-      box-shadow: 0 16px 50px rgba(0,255,208,.18);
-      border:0;
-      cursor:pointer;
-    }
-
-    .small{
-      font-size:13px;
-      color:rgba(233,238,252,.75);
-      margin-top:6px;
+      box-shadow: 0 14px 34px rgba(30,247,217,.25);
       text-align:center;
     }
+    .smallMuted{color: var(--muted2); font-size: 13px; margin-top: 6px; text-align:center;}
 
-    .label{
-      color:rgba(233,238,252,.75);
-      font-size:16px;
-      margin:14px 0 10px;
-      font-weight:800;
+    .sectionTitle{
+      text-align:left;
+      font-size: 16px;
+      letter-spacing:.4px;
+      color: var(--muted);
+      margin: 18px 0 8px;
+      font-weight: 900;
     }
 
     .walletBox{
-      background: rgba(0,0,0,.24);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:18px;
-      padding:14px;
-      word-break:break-all;
-      font-weight:800;
-      letter-spacing:.2px;
-      font-size:18px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 14px;
       text-align:left;
+      overflow-wrap:anywhere;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 14px;
+      color: #eafdf9;
     }
 
     .copyBtn{
-      margin-top:12px;
+      margin-top: 10px;
       display:inline-flex;
       align-items:center;
-      justify-content:center;
       gap:10px;
-      padding:12px 16px;
-      border-radius:16px;
-      border:1px solid rgba(0,255,208,.25);
-      background: rgba(0,255,208,.10);
-      color:#dffef8;
-      font-weight:900;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(30,247,217,.12);
+      border: 1px solid rgba(30,247,217,.25);
+      color: #dffef8;
+      font-weight: 900;
       cursor:pointer;
+      user-select:none;
     }
 
-    .howto p{
-      margin:8px 0;
-      color:rgba(233,238,252,.92);
-      font-weight:700;
-      font-size:16px;
+    .howto{
+      text-align:left;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+    .howto b{color:#fff}
+    .tip{ margin-top: 10px; font-size: 13px; color: var(--muted2); }
+
+    .statusLine{
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted2);
+      text-align:center;
+      min-height: 18px;
     }
 
-    .tip{
-      margin-top:10px;
-      padding-top:10px;
-      border-top:1px solid rgba(255,255,255,.10);
-      color:rgba(233,238,252,.78);
-      font-size:14px;
-      font-weight:700;
-    }
-
-    .twoCol{
+    .grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:14px;
-      margin-top:14px;
+      gap: 14px;
+      margin-top: 14px;
     }
-    @media(max-width:720px){
-      .twoCol{ grid-template-columns: 1fr; }
-      h1{ font-size:46px; }
-      .stageTitle{ font-size:34px; }
+    @media(max-width:760px){
+      .grid{ grid-template-columns: 1fr; }
+      h1{ font-size: 46px; }
+      .stageTitle{ font-size: 36px; }
     }
 
     .input{
       width:100%;
-      padding:14px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      color:var(--text);
-      font-weight:800;
+      padding: 13px 13px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      font-weight: 800;
       outline:none;
-      font-size:15px;
+      font-size: 14px;
+      margin-top: 10px;
     }
-
-    .actionBtn{
+    .miniBtn{
       width:100%;
       margin-top:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(0,255,208,.25);
-      background: rgba(0,255,208,.10);
-      color:#dffef8;
-      font-weight:900;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(30,247,217,.25);
+      background: rgba(30,247,217,.12);
+      color: #dffef8;
+      font-weight: 900;
       cursor:pointer;
     }
-
     .result{
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
-      color:rgba(233,238,252,.92);
-      font-weight:800;
-      font-size:14px;
-      line-height:1.35;
-      min-height:54px;
+      color: rgba(255,255,255,.90);
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1.35;
+      min-height: 58px;
+      overflow-wrap:anywhere;
+    }
+
+    .links{
+      display:flex;
+      gap: 10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .link{
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: #fff;
+      text-decoration:none;
+      font-weight: 800;
+      opacity:.95;
     }
 
     footer{
-      margin-top:18px;
-      opacity:.65;
-      font-size:12px;
-      padding:18px 10px 26px;
-    }
-    a.link{
-      color:var(--teal);
-      font-weight:900;
-      text-decoration:none;
+      opacity:.55;
+      font-size: 12px;
+      padding: 18px 10px 26px;
+      text-align:center;
     }
   </style>
 </head>
@@ -249,11 +243,8 @@
 <body>
   <div class="wrap">
     <div class="hero">
-      <!-- Optional banner image (uses your existing IMG_6472.jpeg) -->
-      <div class="banner">
-        <img src="IMG_6472.jpeg" alt="$WALRUS banner" />
-      </div>
-
+      <!-- If this image filename is wrong, the page still works -->
+      <img class="logo" src="IMG_6472.jpeg" alt="WALRUS" onerror="this.style.display='none';" />
       <h1>$WALRUS</h1>
       <div class="sub">Presale • Built on Solana</div>
     </div>
@@ -262,107 +253,108 @@
       <div id="stageTitle" class="stageTitle">Stage 1 Presale</div>
 
       <div class="row">
-        <div id="stagePricePill" class="pill">Stage 1 Price: $0.0000001</div>
-        <div id="raisedPill" class="pill">Raised: 0.00 SOL</div>
+        <div class="pill"><b>Stage Price:</b> <span id="stagePrice">$0.0000001</span></div>
+        <div class="pill"><b>Raised:</b> <span id="raisedSol">0.00 SOL</span></div>
       </div>
 
-      <div class="row">
-        <div id="nextStagePill" class="pill">Next Stage at: 100 SOL</div>
-      </div>
+      <div class="next" id="nextStage">Next Stage at: 1500 SOL</div>
 
-      <!-- BUY button -->
-      <a id="buyBtn" class="bigBtn" href="#" rel="noopener">BUY WITH SOL</a>
-      <div class="small">Tip: This opens Phantom/Solflare with the presale wallet prefilled.</div>
+      <a id="buyBtn" class="btn" href="#">BUY WITH SOL</a>
+      <div class="smallMuted">Opens Phantom / Solflare</div>
 
-      <div class="label">Presale Wallet</div>
-      <div id="walletBox" class="walletBox">9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi</div>
+      <div class="sectionTitle">Presale Wallet</div>
+      <div class="walletBox" id="walletText"></div>
+      <div class="copyBtn" id="copyBtn">📋 Copy Wallet</div>
 
-      <button id="copyWalletBtn" class="copyBtn" type="button">📋 Copy Wallet</button>
-
-      <div class="card howto" style="margin-top:16px;">
-        <h2 style="margin:4px 0 10px; text-align:center;">How to Buy</h2>
-        <p>1) Tap <b>BUY WITH SOL</b> (opens Phantom/Solflare)</p>
-        <p>2) Send SOL to the presale wallet above</p>
-        <p>3) Save your Solscan TX link (proof of payment)</p>
-        <p>4) Tokens are distributed after launch (see official announcements)</p>
+      <div class="sectionTitle">How to Buy</div>
+      <div class="howto">
+        <div>1) Tap <b>BUY WITH SOL</b> (opens Phantom/Solflare)</div>
+        <div>2) Send SOL to the wallet above</div>
+        <div>3) Save your <b>Solscan TX link</b> (proof of payment)</div>
+        <div>4) Tokens are distributed after launch (official updates)</div>
         <div class="tip">Tip: Don’t send from an exchange. Send from Phantom/Solflare.</div>
       </div>
 
-      <div class="twoCol">
+      <div class="statusLine" id="statusLine">Loading…</div>
+
+      <div class="grid">
         <div class="card" style="margin:0;">
-          <h3 style="margin:4px 0 10px; text-align:center;">Check Your Contribution</h3>
-          <input id="buyerWalletInput" class="input" placeholder="Paste your Solana wallet address (your sending wallet)" />
-          <button id="checkBtn" class="actionBtn" type="button">Check</button>
-          <div id="checkResult" class="result">
-            Paste your wallet, then tap Check. We’ll total SOL sent to the presale wallet (on-chain).
+          <div style="text-align:center; font-weight:1000; font-size:18px;">Estimate My Tokens</div>
+          <div style="text-align:center; color:var(--muted2); font-weight:700; font-size:13px; margin-top:6px;">
+            Enter how much SOL you sent (estimate uses current stage price).
           </div>
+          <input id="solInput" class="input" type="number" step="0.0001" placeholder="SOL you sent (example: 1.5)" />
+          <button id="calcBtn" class="miniBtn" type="button">Calculate</button>
+          <div id="tokenEstimate" class="result">Enter SOL amount to calculate…</div>
         </div>
 
         <div class="card" style="margin:0;">
-          <h3 style="margin:4px 0 10px; text-align:center;">Official Links</h3>
-          <div style="font-weight:900; margin-top:6px;">
-            Website: <span style="opacity:.85;">walrusmemecoin.com</span>
+          <div style="text-align:center; font-weight:1000; font-size:18px;">Check My Contribution (Optional)</div>
+          <div style="text-align:center; color:var(--muted2); font-weight:700; font-size:13px; margin-top:6px;">
+            If this ever causes issues, you can disable it (1 setting in code).
           </div>
-          <div style="margin-top:10px; font-weight:900;">
-            X: <a class="link" href="https://x.com/walrusmemecoin" target="_blank" rel="noopener">@walrusmemecoin</a>
-          </div>
-          <div style="margin-top:10px; font-weight:900;">
-            Solscan Wallet:
-            <a id="solscanLink" class="link" href="#" target="_blank" rel="noopener">View</a>
-          </div>
-          <div style="margin-top:10px; font-size:13px; opacity:.8; font-weight:800;">
-            Always verify links from official accounts.
-          </div>
+          <input id="buyerWalletInput" class="input" placeholder="Your Solana wallet address" />
+          <button id="checkBtn" class="miniBtn" type="button">Check</button>
+          <div id="checkResult" class="result">Paste wallet → tap Check.</div>
         </div>
       </div>
     </div>
 
+    <div class="links">
+      <a class="link" href="https://x.com/walrusmemecoin" target="_blank" rel="noreferrer">Official X: @walrusmemecoin</a>
+      <a class="link" id="solscanLink" href="#" target="_blank" rel="noreferrer">View Wallet on Solscan</a>
+    </div>
+
     <footer>
-      This page displays on-chain info (Raised SOL) from the presale wallet. Always verify addresses and transactions.
+      Stages update automatically based on SOL in the presale wallet.
+      Always verify addresses and official links.
     </footer>
   </div>
 
   <script>
     /***********************
-     * SETTINGS YOU CAN EDIT
+     * SETTINGS
      ***********************/
     const PRESALE_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
 
-    // Stage rules
-    const STAGES_TOTAL = 20;
-    const SOL_PER_STAGE = 100; // Stage 1 = 0-99.999..., Stage 2 = 100-199.999..., etc
+    const TOTAL_STAGES = 20;
+    const SOL_PER_STAGE = 1500;
 
-    // Price display (USD) – starts at $0.0000001 and increases each stage by a multiplier
-    const STAGE1_PRICE_USD = 0.0000001;
-    const PRICE_MULTIPLIER = 1.20; // 20% increase each stage (change if you want)
+    // Price ladder: Stage N = N * 0.0000001 USD
+    // Stage 1: 0.0000001
+    // Stage 2: 0.0000002
+    const PRICE_STEP_USD = 0.0000001;
 
-    // Public Solana RPC (fine for light use)
+    // If the contribution scanner causes issues, set this to false:
+    const ENABLE_CONTRIBUTION_SCAN = true;
+
     const RPC_URL = "https://api.mainnet-beta.solana.com";
 
     /***********************
-     * HELPERS
+     * SAFE HELPERS
      ***********************/
-    function formatSOL(x){
-      return (Math.round(x * 100) / 100).toFixed(2);
+    function formatSol(n){
+      return (Math.floor(n * 100) / 100).toFixed(2) + " SOL";
     }
 
-    function stageFromRaisedSOL(raised){
-      const s = Math.floor(raised / SOL_PER_STAGE) + 1;
-      return Math.min(Math.max(s, 1), STAGES_TOTAL);
+    // Always show full zeros, never scientific notation
+    function formatUsdStagePrice(n){
+      // 0.0000001 -> "0.0000001"
+      return "$" + n.toFixed(7);
     }
 
-    function stagePriceUSD(stage){
-      // stage 1 = base, stage 2 = base * mult, etc
-      return STAGE1_PRICE_USD * Math.pow(PRICE_MULTIPLIER, (stage - 1));
+    function getStageFromRaised(raisedSol){
+      const idx = Math.floor(raisedSol / SOL_PER_STAGE) + 1;
+      return Math.max(1, Math.min(TOTAL_STAGES, idx));
     }
 
-    function formatUSDPrice(x){
-      // Show small values nicely (no scientific notation)
-      // For your starting price, 7 decimals after leading zeros is good.
-      if (x < 0.0001) return x.toFixed(7);       // 0.0000001 -> "0.0000001"
-      if (x < 0.01)   return x.toFixed(6);
-      if (x < 1)      return x.toFixed(4);
-      return x.toFixed(2);
+    function getStagePrice(stage){
+      return stage * PRICE_STEP_USD;
+    }
+
+    function nextThreshold(stage){
+      if(stage >= TOTAL_STAGES) return null;
+      return stage * SOL_PER_STAGE;
     }
 
     async function rpc(method, params){
@@ -372,133 +364,146 @@
         body: JSON.stringify({ jsonrpc:"2.0", id:1, method, params })
       });
       const data = await res.json();
-      if (data.error) throw new Error(data.error.message || "RPC error");
-      return data.result;
+      if (data && data.error) throw new Error(data.error.message || "RPC error");
+      return data ? data.result : null;
     }
 
-    async function getWalletBalanceSOL(address){
-      const result = await rpc("getBalance", [address]);
-      const lamports = result.value || 0;
-      return lamports / 1e9;
+    async function fetchWalletBalanceSol(address){
+      const result = await rpc("getBalance", [address, { commitment: "confirmed" }]);
+      const lamports = result && typeof result.value === "number" ? result.value : 0;
+      return lamports / 1_000_000_000;
     }
 
-    // Sum SOL transfers from a buyer wallet to PRESALE_WALLET by scanning buyer signatures
-    // NOTE: This can be slow if they have tons of history. We limit to recent N.
+    // Best-effort scan: never crashes the page
     async function getBuyerSentSOLToPresale(buyerAddress, limit=40){
-      const sigs = await rpc("getSignaturesForAddress", [buyerAddress, { limit }]);
-      let total = 0;
+      try{
+        const sigs = await rpc("getSignaturesForAddress", [buyerAddress, { limit }]);
+        if (!Array.isArray(sigs)) return 0;
 
-      for (const s of sigs){
-        const tx = await rpc("getTransaction", [s.signature, { maxSupportedTransactionVersion: 0 }]);
-        if (!tx || !tx.transaction) continue;
+        let total = 0;
 
-        const message = tx.transaction.message;
-        const accountKeys = message.accountKeys || [];
-        const meta = tx.meta;
+        for (const s of sigs){
+          const tx = await rpc("getTransaction", [s.signature, { maxSupportedTransactionVersion: 0 }]);
+          if (!tx || !tx.transaction || !tx.meta) continue;
 
-        // We need pre/post balances and find transfers where PRESALE_WALLET balance increases
-        // Simplest heuristic:
-        // If PRESALE_WALLET is in accountKeys, compute delta in lamports for that key
-        const idx = accountKeys.findIndex(k => (typeof k === "string" ? k : k.pubkey) === PRESALE_WALLET);
-        if (idx === -1) continue;
+          const keys = tx.transaction.message.accountKeys || [];
+          const meta = tx.meta;
 
-        const pre = (meta.preBalances && meta.preBalances[idx]) ? meta.preBalances[idx] : 0;
-        const post = (meta.postBalances && meta.postBalances[idx]) ? meta.postBalances[idx] : 0;
+          const idx = keys.findIndex(k => (typeof k === "string" ? k : k.pubkey) === PRESALE_WALLET);
+          if (idx === -1) continue;
 
-        const delta = post - pre; // lamports gained by presale wallet
-        if (delta > 0){
-          // confirm buyerAddress is also involved (it is, because we searched buyerAddress signatures),
-          // so count it
-          total += delta / 1e9;
+          const pre = (meta.preBalances && meta.preBalances[idx]) ? meta.preBalances[idx] : 0;
+          const post = (meta.postBalances && meta.postBalances[idx]) ? meta.postBalances[idx] : 0;
+
+          const deltaLamports = post - pre;
+          if (deltaLamports > 0) total += deltaLamports / 1e9;
         }
+        return total;
+      }catch(e){
+        return 0;
       }
-      return total;
     }
 
-    /***********************
-     * INIT UI
-     ***********************/
-    const walletBox = document.getElementById("walletBox");
-    const buyBtn = document.getElementById("buyBtn");
-    const solscanLink = document.getElementById("solscanLink");
+    function updateUI(raisedSol){
+      const stage = getStageFromRaised(raisedSol);
+      const price = getStagePrice(stage);
+      const next = nextThreshold(stage);
 
-    walletBox.textContent = PRESALE_WALLET;
-    buyBtn.href = `solana:${PRESALE_WALLET}`; // opens wallet with address prefilled
-    solscanLink.href = `https://solscan.io/account/${PRESALE_WALLET}`;
+      document.getElementById("stageTitle").textContent = `Stage ${stage} Presale`;
+      document.getElementById("stagePrice").textContent = formatUsdStagePrice(price);
+      document.getElementById("raisedSol").textContent = formatSol(raisedSol);
 
-    // Copy wallet
-    document.getElementById("copyWalletBtn").addEventListener("click", async () => {
+      const nextEl = document.getElementById("nextStage");
+      nextEl.textContent = (next === null)
+        ? `Final Stage Reached (Stage ${TOTAL_STAGES})`
+        : `Next Stage at: ${next} SOL`;
+    }
+
+    async function refresh(){
+      const status = document.getElementById("statusLine");
+      try{
+        status.textContent = "Updating…";
+        const sol = await fetchWalletBalanceSol(PRESALE_WALLET);
+        updateUI(sol);
+        status.textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
+      }catch(e){
+        status.textContent = "Could not load raised amount. Refresh and try again.";
+      }
+    }
+
+    // Buttons
+    document.getElementById("copyBtn").addEventListener("click", async () => {
       try{
         await navigator.clipboard.writeText(PRESALE_WALLET);
-        alert("Wallet copied!");
+        document.getElementById("copyBtn").textContent = "✅ Copied!";
+        setTimeout(() => document.getElementById("copyBtn").textContent = "📋 Copy Wallet", 1200);
       }catch(e){
-        alert("Couldn’t copy automatically. Tap and hold the wallet address to copy.");
+        window.prompt("Copy this wallet:", PRESALE_WALLET);
       }
     });
 
-    // Live raised + stage auto-update
-    async function refreshRaisedAndStage(){
-      try{
-        const raised = await getWalletBalanceSOL(PRESALE_WALLET);
-        const stage = stageFromRaisedSOL(raised);
+    document.getElementById("calcBtn").addEventListener("click", async () => {
+      const solSent = parseFloat(document.getElementById("solInput").value || "0");
+      const out = document.getElementById("tokenEstimate");
 
-        const nextThreshold = stage * SOL_PER_STAGE;
-        const price = stagePriceUSD(stage);
-
-        document.getElementById("stageTitle").textContent = `Stage ${stage} Presale`;
-        document.getElementById("raisedPill").textContent = `Raised: ${formatSOL(raised)} SOL`;
-        document.getElementById("nextStagePill").textContent =
-          stage >= STAGES_TOTAL ? `Final Stage Reached` : `Next Stage at: ${nextThreshold} SOL`;
-
-        document.getElementById("stagePricePill").textContent =
-          `Stage ${stage} Price: $${formatUSDPrice(price)}`;
-
-      }catch(err){
-        console.log(err);
-        document.getElementById("raisedPill").textContent = `Raised: (loading...)`;
-      }
-    }
-
-    refreshRaisedAndStage();
-    setInterval(refreshRaisedAndStage, 20000); // update every 20s
-
-    // Buyer contribution checker
-    document.getElementById("checkBtn").addEventListener("click", async () => {
-      const input = document.getElementById("buyerWalletInput").value.trim();
-      const out = document.getElementById("checkResult");
-
-      if (!input || input.length < 32){
-        out.textContent = "Paste a valid Solana wallet address first.";
+      if (!solSent || solSent <= 0){
+        out.textContent = "Enter a valid SOL amount.";
         return;
       }
 
-      out.textContent = "Checking recent transactions… (this may take 10–30s)";
-      try{
-        const sent = await getBuyerSentSOLToPresale(input, 40);
+      // Estimate uses CURRENT stage
+      let raisedSol = 0;
+      try { raisedSol = await fetchWalletBalanceSol(PRESALE_WALLET); } catch(e) {}
+      const stage = getStageFromRaised(raisedSol);
+      const price = getStagePrice(stage);
 
-        // Estimate tokens at CURRENT stage price (this is only an estimate)
-        const raised = await getWalletBalanceSOL(PRESALE_WALLET);
-        const stage = stageFromRaisedSOL(raised);
-        const price = stagePriceUSD(stage);
-
-        // If your token is "USD priced", this is a placeholder estimate.
-        // Replace with your real tokenomics when ready.
-        const estTokens = price > 0 ? (sent / price) : 0;
-
-        out.innerHTML = `
-          <div><b>SOL sent to presale wallet (recent scan):</b> ${sent.toFixed(4)} SOL</div>
-          <div style="margin-top:6px; opacity:.85;">
-            <b>Estimated tokens</b> (using current Stage ${stage} price $${formatUSDPrice(price)}): ${Math.floor(estTokens).toLocaleString()}
-          </div>
-          <div style="margin-top:8px; font-size:12px; opacity:.75;">
-            Note: This is an estimate and depends on your actual distribution rules.
-          </div>
-        `;
-      }catch(err){
-        console.log(err);
-        out.textContent = "Couldn’t load transaction data right now. Try again in a moment.";
-      }
+      const estTokens = (price > 0) ? (solSent / price) : 0;
+      out.textContent = `Stage ${stage} price ${formatUsdStagePrice(price)} → ${solSent.toFixed(4)} SOL ≈ ${Math.floor(estTokens).toLocaleString()} WALRUS (estimate)`;
     });
+
+    document.getElementById("checkBtn").addEventListener("click", async () => {
+      const buyer = document.getElementById("buyerWalletInput").value.trim();
+      const out = document.getElementById("checkResult");
+
+      if (!ENABLE_CONTRIBUTION_SCAN){
+        out.textContent = "Contribution check is disabled.";
+        return;
+      }
+
+      if (!buyer || buyer.length < 32){
+        out.textContent = "Paste a valid Solana wallet address.";
+        return;
+      }
+
+      out.textContent = "Checking… (can take 10–30s)";
+      const sent = await getBuyerSentSOLToPresale(buyer, 40);
+
+      let raisedSol = 0;
+      try { raisedSol = await fetchWalletBalanceSol(PRESALE_WALLET); } catch(e) {}
+      const stage = getStageFromRaised(raisedSol);
+      const price = getStagePrice(stage);
+      const estTokens = (price > 0) ? (sent / price) : 0;
+
+      out.innerHTML =
+        `<div><b>SOL sent (recent scan):</b> ${sent.toFixed(4)} SOL</div>` +
+        `<div style="margin-top:6px; opacity:.85;"><b>Estimated tokens</b> (Stage ${stage}): ${Math.floor(estTokens).toLocaleString()} WALRUS</div>` +
+        `<div style="margin-top:8px; font-size:12px; opacity:.75;">Estimate only. Final allocation depends on your distribution rules.</div>`;
+    });
+
+    // Init (never blank)
+    (function init(){
+      document.getElementById("walletText").textContent = PRESALE_WALLET;
+      document.getElementById("buyBtn").setAttribute("href", `solana:${PRESALE_WALLET}`);
+      document.getElementById("solscanLink").setAttribute("href", `https://solscan.io/account/${PRESALE_WALLET}`);
+
+      // Set a safe default UI immediately
+      updateUI(0);
+      document.getElementById("statusLine").textContent = "Loading on-chain data…";
+
+      // Refresh on-chain
+      refresh();
+      setInterval(refresh, 20000);
+    })();
   </script>
 </body>
 </html>
