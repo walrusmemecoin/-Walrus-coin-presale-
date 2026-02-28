@@ -30,7 +30,6 @@
       position:relative;
     }
 
-    /* subtle background glow */
     .glow{
       position:fixed;
       inset:-200px;
@@ -151,7 +150,7 @@
     }
 
     input{
-      width:220px;
+      width:260px;
       padding:14px 14px;
       border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
@@ -161,7 +160,6 @@
       font-size:16px;
       font-weight:700;
     }
-
     input::placeholder{color:rgba(255,255,255,.45);}
 
     .btnRow{
@@ -195,50 +193,32 @@
       color:white;
     }
 
+    .addr{
+      margin-top:12px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.12);
+      word-break:break-all;
+      cursor:pointer;
+      user-select:none;
+    }
+    .addr small{display:block;color:rgba(255,255,255,.6);font-weight:800;margin-bottom:6px;}
+    .addr strong{font-size:16px; letter-spacing:.2px;}
+
+    .miniLink{
+      display:inline-block;
+      margin-top:10px;
+      color:var(--accent);
+      font-weight:900;
+      text-decoration:none;
+    }
+
     .note{
       margin-top:14px;
       color:rgba(255,255,255,.55);
       font-size:12.5px;
       font-weight:650;
-    }
-
-    .sectionTitle{
-      font-size:30px;
-      font-weight:1000;
-      margin:6px 0 8px;
-    }
-
-    ul{
-      list-style:none;
-      padding:0;
-      margin:12px auto 6px;
-      max-width:560px;
-      text-align:left;
-    }
-    li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding:10px 12px;
-      border-radius:14px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      margin:10px 0;
-      font-weight:800;
-    }
-    .check{
-      width:26px;
-      height:26px;
-      border-radius:8px;
-      background:rgba(62,242,194,.18);
-      border:1px solid rgba(62,242,194,.35);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--accent);
-      font-weight:1000;
-      flex:0 0 auto;
-      margin-top:1px;
     }
 
     .footerSpace{height:10px;}
@@ -249,228 +229,128 @@
   <div class="glow"></div>
 
   <div class="wrap">
-
-    <!-- ✅ TOP IMAGE (Rich Walrus) -->
+    <!-- TOP IMAGE -->
     <img class="heroImg" src="IMG_6472.jpeg" alt="$WALRUS main art">
 
     <h1>$WALRUS</h1>
     <div class="sub">Presale • Built on Solana</div>
 
-    <div class="card" id="presaleCard">
-      <div class="stageTitle" id="stageTitle">Stage 1 Presale</div>
+    <div class="card">
+      <div class="stageTitle">Stage 1 Presale</div>
 
       <div class="row">
-        <div class="pill" id="pricePill"><small>Stage Price</small><br><strong>0.0000001</strong></div>
-        <div class="pill" id="raisedPill"><small>Raised</small><br><strong>0 SOL</strong></div>
+        <div class="pill"><small>Stage Price</small><br><strong>0.0000001</strong></div>
+        <div class="pill"><small>Raised</small><br><strong id="raisedText">0.00 SOL</strong></div>
       </div>
 
       <div class="progressWrap">
         <div class="progressTop">
-          <span id="progressLeft">0 / 1500 SOL (Stage 1)</span>
+          <span id="progressLeft">0.00 / 1500 SOL (Stage 1)</span>
           <span id="progressPct">0%</span>
         </div>
         <div class="bar"><div class="barFill" id="barFill"></div></div>
       </div>
 
       <div class="row">
-        <div class="pill" id="nextPill"><small>Next Stage At</small><br><strong>1500 SOL</strong></div>
-        <div class="pill" id="ownedPill"><small>Your Estimate</small><br><strong id="ownedText">0 WALRUS</strong></div>
+        <div class="pill"><small>Next Stage At</small><br><strong>1500 SOL</strong></div>
+        <div class="pill"><small>Your Estimate</small><br><strong id="ownedText">0 WALRUS</strong></div>
       </div>
 
       <div class="inputs">
         <input id="solInput" inputmode="decimal" placeholder="Enter SOL amount" />
-        <input id="addRaisedInput" inputmode="decimal" placeholder="(Admin) Add raised SOL" />
       </div>
 
       <div class="btnRow">
-        <button class="btn btnGhost" id="connectBtn">Connect Wallet</button>
+        <button class="btn btnGhost" id="openInPhantomBtn">Open in Phantom</button>
         <button class="btn btnPrimary" id="buyBtn">BUY WITH SOL</button>
       </div>
 
+      <div class="addr" id="depositBox" title="Tap to copy">
+        <small>Presale Deposit Wallet (tap to copy)</small>
+        <strong id="depositAddrText"></strong>
+      </div>
+
+      <a class="miniLink" id="solscanLink" target="_blank" rel="noopener">View on Solscan: Open Explorer</a>
+
       <div class="note">
-        This page auto-advances stages based on SOL raised (demo UI). Raised amount is saved in your browser so it stays after refresh.
+        Tip: On iPhone, the smoothest experience is opening this page inside Phantom’s in-app browser.
+        “BUY WITH SOL” uses a Solana Pay link and will open a compatible wallet to confirm.
       </div>
     </div>
 
-    <div class="card">
-      <div class="sectionTitle">💬 NEXT (when you’re ready)</div>
-      <div class="sub" style="margin-top:0;">After this works we can add:</div>
-
-      <ul>
-        <li><div class="check">✓</div> auto stage progression to 20</li>
-        <li><div class="check">✓</div> live progress bar</li>
-        <li><div class="check">✓</div> wallet connect</li>
-        <li><div class="check">✓</div> real SOL payments</li>
-        <li><div class="check">✓</div> Pump.fun style hype UI</li>
-      </ul>
-
-      <div class="note">
-        Wallet connect + real SOL payments require Solana integration. We can add that once you decide your presale wallet + flow.
-      </div>
-    </div>
-
-    <!-- ✅ BOTTOM IMAGE (Trump + Walrus Handshake) -->
+    <!-- BOTTOM IMAGE -->
     <img class="heroImg" src="IMG_6473.jpeg" alt="$WALRUS handshake art">
 
     <div class="footerSpace"></div>
   </div>
 
 <script>
-/**
- * SETTINGS
- * - 20 stages
- * - each stage cap: 1500 SOL
- * - price increases by +0.0000001 each stage (stage 1 = 0.0000001, stage 2 = 0.0000002, ...)
- */
-const STAGES_TOTAL = 20;
-const STAGE_CAP_SOL = 1500;
+  const DEPOSIT_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
 
-// ✅ PRESALE DEPOSIT WALLET (your wallet)
-const DEPOSIT_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
+  const STAGE_CAP_SOL = 1500;
+  const STAGE_PRICE = 0.0000001; // Stage 1 price
 
-// stage 1 price = 0.0000001
-function priceForStage(stage){
-  const base = 0.0000001;
-  return base * stage;
-}
+  // Always start at 0 (static). Real raised requires a backend / verified on-chain source.
+  const raised = 0.00;
 
-function fmtPrice(p){
-  // keep 7 decimals like 0.0000001
-  return p.toFixed(7);
-}
+  // Render static UI at 0
+  document.getElementById("raisedText").innerText = `${raised.toFixed(2)} SOL`;
+  document.getElementById("progressLeft").innerText = `${raised.toFixed(2)} / ${STAGE_CAP_SOL} SOL (Stage 1)`;
+  document.getElementById("progressPct").innerText = `0%`;
+  document.getElementById("barFill").style.width = "0%";
 
-function clamp(n,min,max){ return Math.max(min, Math.min(max,n)); }
+  // Solscan link + deposit display
+  document.getElementById("solscanLink").href = `https://solscan.io/account/${DEPOSIT_WALLET}`;
+  document.getElementById("depositAddrText").innerText = DEPOSIT_WALLET;
 
-// --- state (saved locally so it persists) ---
-const KEY = "walrus_presale_state_v1";
-let state = {
-  raisedTotal: 0,   // total SOL raised (demo)
-  walletConnected: false
-};
-
-function load(){
-  try{
-    const raw = localStorage.getItem(KEY);
-    if(raw){
-      const parsed = JSON.parse(raw);
-      if(typeof parsed.raisedTotal === "number") state.raisedTotal = parsed.raisedTotal;
-      if(typeof parsed.walletConnected === "boolean") state.walletConnected = parsed.walletConnected;
+  // Tap to copy
+  document.getElementById("depositBox").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(DEPOSIT_WALLET);
+      alert("Copied deposit wallet ✅");
+    } catch (e) {
+      const t = document.createElement("textarea");
+      t.value = DEPOSIT_WALLET;
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand("copy");
+      t.remove();
+      alert("Copied deposit wallet ✅");
     }
-  }catch(e){}
-}
+  });
 
-function save(){
-  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
-}
-
-function getStageFromRaised(raisedTotal){
-  // stage = floor(raised / cap) + 1, clamped to 20
-  const s = Math.floor(raisedTotal / STAGE_CAP_SOL) + 1;
-  return clamp(s, 1, STAGES_TOTAL);
-}
-
-function stageRaisedAmount(raisedTotal){
-  // how much raised within current stage
-  return raisedTotal % STAGE_CAP_SOL;
-}
-
-function updateUI(){
-  const stage = getStageFromRaised(state.raisedTotal);
-  const stageRaised = stageRaisedAmount(state.raisedTotal);
-  const price = priceForStage(stage);
-
-  // labels
-  document.getElementById("stageTitle").innerText = `Stage ${stage} Presale`;
-  document.getElementById("pricePill").innerHTML = `<small>Stage Price</small><br><strong>${fmtPrice(price)}</strong>`;
-  document.getElementById("raisedPill").innerHTML = `<small>Raised</small><br><strong>${state.raisedTotal.toFixed(2)} SOL</strong></div>`;
-  document.getElementById("nextPill").innerHTML = `<small>Next Stage At</small><br><strong>${(stage * STAGE_CAP_SOL).toFixed(0)} SOL</strong>`;
-
-  // progress bar
-  const pct = (stageRaised / STAGE_CAP_SOL) * 100;
-  document.getElementById("barFill").style.width = `${clamp(pct,0,100)}%`;
-  document.getElementById("progressLeft").innerText = `${stageRaised.toFixed(2)} / ${STAGE_CAP_SOL} SOL (Stage ${stage})`;
-  document.getElementById("progressPct").innerText = `${Math.floor(pct)}%`;
-
-  // wallet button
-  const connectBtn = document.getElementById("connectBtn");
-  connectBtn.innerText = state.walletConnected ? "Wallet Connected ✅" : "Connect Wallet";
-  connectBtn.style.filter = state.walletConnected ? "brightness(1.05)" : "none";
-
-  // update estimate (if input has value)
-  const solVal = Number(document.getElementById("solInput").value || 0);
-  const tokens = (solVal > 0) ? Math.floor(solVal / price) : 0;
-  document.getElementById("ownedText").innerText = `${tokens.toLocaleString()} WALRUS`;
-}
-
-function showToast(msg){
-  alert(msg);
-}
-
-/**
- * ✅ ONLY CHANGE YOU REQUESTED:
- * Make BUY always jump into Phantom (iOS Safari reliable)
- */
-function openPhantomTransfer(amountSol){
-  const recipient = encodeURIComponent(DEPOSIT_WALLET);
-  const amount = encodeURIComponent(String(amountSol));
-
-  // 1) iOS app scheme (most reliable)
-  const appLink = `phantom://ul/v1/transfer?recipient=${recipient}&amount=${amount}`;
-
-  // 2) fallback universal link
-  const webLink = `https://phantom.app/ul/v1/transfer?recipient=${recipient}&amount=${amount}`;
-
-  // Try app scheme first
-  window.location.href = appLink;
-
-  // Fallback shortly after
-  setTimeout(() => {
-    window.location.href = webLink;
-  }, 600);
-}
-
-load();
-updateUI();
-
-// SOL input = estimate
-document.getElementById("solInput").addEventListener("input", updateUI);
-
-// (Admin) add raised SOL (demo)
-document.getElementById("addRaisedInput").addEventListener("change", (e)=>{
-  const add = Number(e.target.value || 0);
-  if(!isFinite(add) || add <= 0){
-    e.target.value = "";
-    return;
+  // Estimate tokens
+  function updateEstimate(){
+    const solVal = Number(document.getElementById("solInput").value || 0);
+    const tokens = (solVal > 0) ? Math.floor(solVal / STAGE_PRICE) : 0;
+    document.getElementById("ownedText").innerText = `${tokens.toLocaleString()} WALRUS`;
   }
-  state.raisedTotal = Math.max(0, state.raisedTotal + add);
-  save();
-  e.target.value = "";
-  updateUI();
-});
+  document.getElementById("solInput").addEventListener("input", updateEstimate);
+  updateEstimate();
 
-// connect wallet (demo)
-document.getElementById("connectBtn").addEventListener("click", ()=>{
-  state.walletConnected = !state.walletConnected;
-  save();
-  updateUI();
-  showToast(state.walletConnected ? "Wallet connected (demo UI)." : "Wallet disconnected.");
-});
+  // Best iPhone flow: open this exact page inside Phantom
+  document.getElementById("openInPhantomBtn").addEventListener("click", () => {
+    const url = window.location.href;
+    window.location.href = `https://phantom.app/ul/browse/${encodeURIComponent(url)}`;
+  });
 
-// BUY button: now opens Phantom transfer for real
-document.getElementById("buyBtn").addEventListener("click", ()=>{
-  const sol = Number(document.getElementById("solInput").value || 0);
+  // BUY WITH SOL via Solana Pay deep link
+  document.getElementById("buyBtn").addEventListener("click", () => {
+    const sol = Number(document.getElementById("solInput").value || 0);
+    if (!isFinite(sol) || sol <= 0) {
+      alert("Enter a SOL amount first.");
+      return;
+    }
 
-  if(!isFinite(sol) || sol <= 0){
-    showToast("Enter a SOL amount first.");
-    return;
-  }
+    const label = encodeURIComponent("$WALRUS Presale");
+    const message = encodeURIComponent("Presale contribution");
+    const amount = encodeURIComponent(sol.toString());
 
-  // ✅ Jump straight to Phantom transfer to your presale wallet
-  openPhantomTransfer(sol);
+    // Solana Pay URI – user confirms in their wallet
+    const solanaPay = `solana:${DEPOSIT_WALLET}?amount=${amount}&label=${label}&message=${message}`;
 
-  // Keep UI the same (no other changes)
-  showToast("Opening Phantom… approve the SOL transfer to complete your presale purchase.");
-});
+    window.location.href = solanaPay;
+  });
 </script>
 
 </body>
