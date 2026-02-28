@@ -294,10 +294,18 @@
   const raised = 83;
 
   // Render static UI at 0
-  document.getElementById("raisedText").innerText = `${raised.toFixed(2)} SOL`;
-  document.getElementById("progressLeft").innerText = `${raised.toFixed(2)} / ${STAGE_CAP_SOL} SOL (Stage 1)`;
-  document.getElementById("progressPct").innerText = `0%`;
-  document.getElementById("barFill").style.width = "0%";
+document.getElementById("raisedText").innerText = raised.toFixed(2) + " SOL";
+
+document.getElementById("progressLeft").innerText =
+  raised.toFixed(2) + " / " + STAGE_CAP_SOL + " SOL (Stage 1)";
+
+const percent = (raised / STAGE_CAP_SOL) * 100;
+
+document.getElementById("progressPct").innerText =
+  Math.floor(percent) + "%";
+
+document.getElementById("barFill").style.width =
+  percent + "%";
 
   // Solscan link + deposit display
   document.getElementById("solscanLink").href = `https://solscan.io/account/${DEPOSIT_WALLET}`;
