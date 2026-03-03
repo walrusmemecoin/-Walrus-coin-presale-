@@ -497,7 +497,7 @@
   const clamped = Math.max(0, Math.min(100, percent));
 
   document.getElementById("raisedText").innerText = `${Math.floor(clamped)}% / 100`;
-  document.getElementById("progressLeft").innerText = "Stage 1";
+  document.getElementById("progressPct").textContent = Math.round(clamped) + "%";
 
   document.getElementById("progressPct").innerText = Math.floor(clamped) + "%";
   document.getElementById("barFill").style.width = clamped + "%";
