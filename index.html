@@ -496,7 +496,7 @@
   const percent = (raised / STAGE_CAP_SOL) * 100;
   const clamped = Math.max(0, Math.min(100, percent));
 
-  document.getElementById("raisedText").innerText = `${Math.floor(clamped)}% / 100`;
+  document.getElementById("raisedText").innerText = `${Math.floor(clamped)}% / 100%`;
   document.getElementById("progressPct").textContent = Math.round(clamped) + "%";
 
   document.getElementById("progressPct").innerText = Math.floor(clamped) + "%";
