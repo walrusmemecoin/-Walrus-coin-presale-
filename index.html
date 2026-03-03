@@ -148,8 +148,7 @@
       flex-wrap:wrap;
       margin-top:14px;
     }
-
-    input{
+       input{
       width:260px;
       padding:14px 14px;
       border-radius:14px;
@@ -223,7 +222,6 @@
 
     .footerSpace{height:10px;}
 
-    /* ✅ ADDED: styles for new sections (only additions) */
     .trust-badges{
       margin: 14px 0 6px 0;
       display:flex;
@@ -315,20 +313,17 @@
   <div class="glow"></div>
 
   <div class="wrap">
-    <!-- TOP IMAGE -->
     <img class="heroImg" src="IMG_6472.jpeg" alt="$WALRUS main art">
 
     <h1>$WALRUS</h1>
     <div class="sub">Presale • Built on Solana</div>
 
-    <!-- ✅ ADDED: WHITEPAPER BUTTON (right here) -->
     <div style="margin-top:14px;">
       <a href="/whitepaper.pdf" target="_blank" class="xBtn">
         📄 Read Whitepaper
       </a>
     </div>
 
-    <!-- ✅ ADDED: TRUST BADGES (right here) -->
     <div class="trust-badges">
       <span class="badge">Built on Solana ⚡</span>
       <span class="badge">Phantom Compatible 👻</span>
@@ -336,8 +331,7 @@
       <span class="badge">Community First 🤝</span>
       <span class="badge">Liquidity Locked at Launch 🔒</span>
     </div>
-
-    <div class="card">
+        <div class="card">
       <div class="sectionTitle">About $WALRUS</div>
       <p class="sub" style="max-width:640px;margin:auto;">
       $WALRUS is a community-driven meme coin built on Solana, designed to combine culture, liquidity, and viral momentum into one unstoppable ecosystem.<br><br>
@@ -361,19 +355,19 @@
 
       <div class="row">
         <div class="pill"><small>Stage Price</small><br><strong>0.0000001</strong></div>
-        <div class="pill"><small>Raised</small><br><strong id="raisedText">0.00 SOL</strong></div>
+        <div class="pill"><small>Progress</small><br><strong id="raisedText">0% / 100</strong></div>
       </div>
 
       <div class="progressWrap">
         <div class="progressTop">
-          <span id="progressLeft">0.00 / 800 SOL (Stage 1)</span>
+          <span id="progressLeft">Stage 1</span>
           <span id="progressPct">0%</span>
         </div>
         <div class="bar"><div class="barFill" id="barFill"></div></div>
       </div>
 
       <div class="row">
-        <div class="pill"><small>Next Stage At</small><br><strong>800 SOL</strong></div>
+        <div class="pill"><small>Next Stage At</small><br><strong>100%</strong></div>
         <div class="pill"><small>Your Estimate</small><br><strong id="ownedText">0 WALRUS</strong></div>
       </div>
 
@@ -381,7 +375,6 @@
         <input id="solInput" inputmode="decimal" placeholder="Enter SOL amount" />
       </div>
 
-      <!-- ✅ ADDED: HOW TO JOIN + FOMO (right here) -->
       <div style="margin-top:18px;">
         <div class="howTitle">How To Join The Presale</div>
         <ol class="howList">
@@ -416,8 +409,7 @@
         “BUY WITH SOL” uses a Solana Pay link and will open a compatible wallet to confirm.
       </div>
     </div> 
-            <!-- ✅ ADDED: TOKENOMICS / ROADMAP / LAUNCH DETAILS (right here) -->
-    <div class="card">
+        <div class="card">
       <div class="sectionHeader">Tokenomics</div>
       <p class="miniP"><strong>Total Supply:</strong> 1,000,000,000 $WALRUS</p>
       <ul class="bullets">
@@ -473,7 +465,6 @@
       <p class="miniP">Official contract address will be announced on all social channels.</p>
     </div>
 
-    <!-- ✅ ADDED: WHITEPAPER SECTION (right here) -->
     <div class="card">
       <div class="sectionHeader">Whitepaper</div>
       <p class="miniP">
@@ -484,7 +475,6 @@
       </a>
     </div>
 
-    <!-- BOTTOM IMAGE -->
     <img class="heroImg" src="IMG_6473.jpeg" alt="$WALRUS handshake art">
 
     <a href="https://x.com/walrusmemecoin" target="_blank" class="xBtn">
@@ -493,8 +483,7 @@
 
     <div class="footerSpace"></div>
   </div>
-
-<script>
+  <script>
   const DEPOSIT_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
 
   const STAGE_CAP_SOL = 800;
@@ -503,25 +492,19 @@
   // Always start at 0 (static). Real raised requires a backend / verified on-chain source.
   const raised = 186;
 
-  // Render UI
-  document.getElementById("raisedText").innerText = raised.toFixed(2) + " SOL";
-
-  document.getElementById("progressLeft").innerText =
-    raised.toFixed(2) + " / " + STAGE_CAP_SOL + " SOL (Stage 1)";
-
+  // Render UI (Percent-only display)
   const percent = (raised / STAGE_CAP_SOL) * 100;
+  const clamped = Math.max(0, Math.min(100, percent));
 
-  document.getElementById("progressPct").innerText =
-    Math.floor(percent) + "%";
+  document.getElementById("raisedText").innerText = `${Math.floor(clamped)}% / 100`;
+  document.getElementById("progressLeft").innerText = "Stage 1";
 
-  document.getElementById("barFill").style.width =
-    percent + "%";
+  document.getElementById("progressPct").innerText = Math.floor(clamped) + "%";
+  document.getElementById("barFill").style.width = clamped + "%";
 
-  // Solscan link + deposit display (✅ FIXED broken line)
   document.getElementById("solscanLink").href = `https://solscan.io/account/${DEPOSIT_WALLET}`;
   document.getElementById("depositAddrText").innerText = DEPOSIT_WALLET;
 
-  // Tap to copy
   document.getElementById("depositBox").addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(DEPOSIT_WALLET);
@@ -537,7 +520,6 @@
     }
   });
 
-  // Estimate tokens (✅ FIXED broken string)
   function updateEstimate(){
     const solVal = Number(document.getElementById("solInput").value || 0);
     const tokens = (solVal > 0) ? Math.floor(solVal / STAGE_PRICE) : 0;
@@ -546,14 +528,11 @@
   document.getElementById("solInput").addEventListener("input", updateEstimate);
   updateEstimate();
 
-  // Best iPhone flow: open this exact page inside Phantom (✅ FIXED broken URL)
   document.getElementById("openInPhantomBtn").addEventListener("click", () => {
     const url = window.location.href;
     window.location.href = `https://phantom.app/ul/browse/${encodeURIComponent(url)}`;
   });
-
-  // BUY WITH SOL via Solana Pay deep link (✅ FIXED broken solanaPay)
-  document.getElementById("buyBtn").addEventListener("click", () => {
+      document.getElementById("buyBtn").addEventListener("click", () => {
     const sol = Number(document.getElementById("solInput").value || 0);
     if (!isFinite(sol) || sol <= 0) {
       alert("Enter a SOL amount first.");
