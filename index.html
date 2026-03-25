@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>$WALRUS Presale</title>
+  <title>Wasted Walrus</title>
 
   <style>
     :root{
       --bg:#070a12;
       --card:rgba(255,255,255,.06);
       --card2:rgba(255,255,255,.08);
-      --stroke:rgba(62,242,194,.28);
+      --stroke:rgba(255,255,255,.12);
       --text:#ffffff;
       --muted:rgba(255,255,255,.72);
-      --accent:#3ef2c2;
-      --accent2:#7dffe9;
+      --accent:#d6a24a;
+      --accent2:#f2cf7a;
       --shadow:0 18px 70px rgba(0,0,0,.55);
       --radius:22px;
     }
@@ -35,9 +35,9 @@
       inset:-200px;
       z-index:-2;
       background:
-        radial-gradient(circle at 20% 30%, rgba(62,242,194,.18), transparent 45%),
-        radial-gradient(circle at 80% 10%, rgba(125,255,233,.14), transparent 45%),
-        radial-gradient(circle at 70% 80%, rgba(62,242,194,.10), transparent 55%);
+        radial-gradient(circle at 20% 30%, rgba(214,162,74,.16), transparent 45%),
+        radial-gradient(circle at 80% 10%, rgba(242,207,122,.12), transparent 45%),
+        radial-gradient(circle at 70% 80%, rgba(214,162,74,.10), transparent 55%);
       filter: blur(14px);
       pointer-events:none;
     }
@@ -51,7 +51,7 @@
     .heroImg{
       width:min(560px,92vw);
       border-radius:var(--radius);
-      box-shadow:0 0 0 1px rgba(255,255,255,.10), 0 0 28px rgba(62,242,194,.22);
+      box-shadow:0 0 0 1px rgba(255,255,255,.10), 0 0 28px rgba(214,162,74,.22);
       margin:10px auto 12px;
       display:block;
     }
@@ -79,207 +79,19 @@
       max-width:760px;
     }
 
-    .stageTitle{
-      font-size:36px;
-      font-weight:900;
-      color:var(--accent);
-      margin:6px 0 14px;
-    }
-
-    .row{
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin:8px 0 14px;
-    }
-
-    .pill{
-      min-width:240px;
-      padding:12px 14px;
-      border-radius:999px;
-      background:rgba(15,42,42,.55);
-      border:1px solid var(--stroke);
-      font-weight:800;
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
-    }
-
-    .pill small{opacity:.75; font-weight:700;}
-    .pill strong{font-weight:900;}
-
-    .progressWrap{
-      margin:14px auto 10px;
-      max-width:560px;
-      text-align:left;
-    }
-
-    .progressTop{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:8px;
-      font-weight:700;
-    }
-
-    .bar{
-      width:100%;
-      height:14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.12);
-      overflow:hidden;
-      box-shadow: inset 0 2px 10px rgba(0,0,0,.45);
-    }
-
-    .barFill{
-      height:100%;
-      width:0%;
-      background:linear-gradient(90deg, var(--accent), var(--accent2));
-      border-radius:999px;
-      box-shadow: 0 0 18px rgba(62,242,194,.35);
-    }
-
-    .inputs{
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-       input{
-      width:260px;
-      padding:14px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.25);
-      color:white;
-      outline:none;
-      font-size:16px;
-      font-weight:700;
-    }
-    input::placeholder{color:rgba(255,255,255,.45);}
-
-    .btnRow{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    .btn{
-      padding:16px 22px;
-      border-radius:16px;
-      border:none;
-      font-weight:1000;
-      font-size:18px;
-      cursor:pointer;
-      letter-spacing:.2px;
-      transition:transform .06s ease, filter .2s ease;
-    }
-    .btn:active{transform:translateY(1px) scale(.99);}
-
-    .btnPrimary{
-      background:linear-gradient(180deg, var(--accent2), var(--accent));
-      color:#02110e;
-      box-shadow:0 18px 40px rgba(62,242,194,.22);
-    }
-    .btnGhost{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      color:white;
-    }
-
-    .addr{
-      margin-top:12px;
-      padding:14px 16px;
-      border-radius:16px;
-      background:rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.12);
-      word-break:break-all;
-      cursor:pointer;
-      user-select:none;
-    }
-    .addr small{display:block;color:rgba(255,255,255,.6);font-weight:800;margin-bottom:6px;}
-    .addr strong{font-size:16px; letter-spacing:.2px;}
-
-    .miniLink{
-      display:inline-block;
-      margin-top:10px;
-      color:#14b8a6;
-      font-weight:900;
-      text-decoration:none;
-    }
-
-    .note{
-      margin-top:14px;
-      color:rgba(255,255,255,.55);
-      font-size:12.5px;
-      font-weight:650;
-    }
-
-    .footerSpace{height:10px;}
-
-    .trust-badges{
-      margin: 14px 0 6px 0;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:center;
-    }
-    .badge{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(15,42,42,.55);
-      border:1px solid var(--stroke);
-      font-weight:900;
-      color:rgba(255,255,255,.92);
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
-      font-size:13px;
-      letter-spacing:.2px;
-    }
-    .howTitle{
-      margin: 0 0 10px 0;
-      font-size:20px;
-      font-weight:1000;
-    }
-    .howList{
-      margin: 0 auto;
-      max-width:520px;
-      text-align:left;
-      line-height:1.6;
-      color:rgba(255,255,255,.86);
-      font-weight:650;
-      padding-left:18px;
-    }
-    .fomo{
-      margin: 16px 0 10px 0;
-      text-align:center;
-    }
-    .fomo h3{
-      margin:0 0 6px 0;
-      font-size:18px;
-      font-weight:1000;
-    }
-    .fomo p{
-      margin:0;
-      color:rgba(255,255,255,.80);
-      font-weight:650;
-    }
     .sectionHeader{
       margin: 0 0 10px 0;
       font-size:22px;
       font-weight:1000;
     }
+
     .miniP{
       margin: 0 0 10px 0;
       color:rgba(255,255,255,.82);
       font-weight:650;
       line-height:1.6;
     }
+
     .bullets{
       margin: 0 auto;
       max-width:620px;
@@ -289,11 +101,12 @@
       color:rgba(255,255,255,.86);
       font-weight:650;
     }
-    .phaseTitle{
+        .phaseTitle{
       margin: 14px 0 6px 0;
       font-weight:1000;
       color:rgba(255,255,255,.95);
     }
+
     .xBtn{
       display:inline-block;
       margin:14px auto 0;
@@ -306,6 +119,47 @@
       font-weight:1000;
       letter-spacing:.2px;
     }
+
+    .btn{
+      display:inline-block;
+      padding:16px 22px;
+      border-radius:16px;
+      border:none;
+      font-weight:1000;
+      font-size:18px;
+      cursor:pointer;
+      letter-spacing:.2px;
+      text-decoration:none;
+    }
+
+    .btnPrimary{
+      background:linear-gradient(180deg, var(--accent2), var(--accent));
+      color:#1b1204;
+      box-shadow:0 18px 40px rgba(214,162,74,.22);
+    }
+
+    .trust-badges{
+      margin: 14px 0 6px 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:900;
+      color:rgba(255,255,255,.92);
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      font-size:13px;
+      letter-spacing:.2px;
+    }
+
+    .footerSpace{height:10px;}
   </style>
 </head>
 
@@ -313,10 +167,10 @@
   <div class="glow"></div>
 
   <div class="wrap">
-    <img class="heroImg" src="IMG_6472.jpeg" alt="$WALRUS main art">
+    <img class="heroImg" src="IMG_6472.jpeg" alt="Wasted Walrus main art">
 
-    <h1>$WALRUS</h1>
-    <div class="sub">Presale • Built on Solana</div>
+    <h1>WASTED WALRUS</h1>
+    <div class="sub">No Presale • Built on Solana • Community Driven</div>
 
     <div style="margin-top:14px;">
       <a href="/whitepaper.pdf" target="_blank" class="xBtn">
@@ -326,156 +180,101 @@
 
     <div class="trust-badges">
       <span class="badge">Built on Solana ⚡</span>
-      <span class="badge">Phantom Compatible 👻</span>
-      <span class="badge">Fair Staged Presale 🟢</span>
-      <span class="badge">Community First 🤝</span>
+      <span class="badge">No Presale 🚫</span>
+      <span class="badge">Community Driven 🥃</span>
+      <span class="badge">Meme Energy Only 🔥</span>
       <span class="badge">Liquidity Locked at Launch 🔒</span>
     </div>
         <div class="card">
-      <div class="sectionTitle">About $WALRUS</div>
-      <p class="sub" style="max-width:640px;margin:auto;">
-      $WALRUS is a community-driven meme coin built on Solana, designed to combine culture, liquidity, and viral momentum into one unstoppable ecosystem.<br><br>
+      <div class="sectionHeader">About Wasted Walrus</div>
+      <p class="miniP" style="max-width:640px;margin:auto;">
+        Wasted Walrus is a community-driven Solana meme coin built for chaos, culture, and pure viral energy.<br><br>
 
-      Born from strength, patience, and long-term conviction — the Walrus represents accumulation, power, and survival in the coldest market conditions.<br><br>
+        No presale. No insiders. No complicated entry structure.<br><br>
 
-      Our presale rewards early believers with the lowest possible entry before staged price increases begin.<br><br>
+        Just a strong brand, a loud community, and a walrus that refuses to stay sober while the charts run.<br><br>
 
-      • Fair staged presale structure<br>
-      • Instant SOL participation<br>
-      • Fast & low-fee Solana network<br>
-      • Strong meme identity<br>
-      • Community-first growth<br><br>
+        Wasted Walrus is built around meme identity, fast execution, and community momentum — with the goal of creating a coin people actually want to post, trade, and rally behind.<br><br>
 
-      Accumulate early. Hold strong. Become part of the WALRUS movement.
+        This is not a staged sale. This is the start of the movement.
       </p>
     </div>
 
     <div class="card">
-      <div class="stageTitle">Stage 1 Presale</div>
-
-      <div class="row">
-        <div class="pill"><small>Stage Price</small><br><strong>0.000001</strong></div>
-        <div class="pill"><small>Progress</small><br><strong id="raisedText">0% / 100% </strong></div>
-      </div>
-
-      <div class="progressWrap">
-        <div class="progressTop">
-          <span id="progressLeft">Stage 1</span>
-          <span id="progressPct">0%</span>
-        </div>
-        <div class="bar"><div class="barFill" id="barFill"></div></div>
-      </div>
-
-      <div class="row">
-        <div class="pill"><small>Next Stage At</small><br><strong>100%</strong></div>
-        <div class="pill"><small>Your Estimate</small><br><strong id="ownedText">0 WALRUS</strong></div>
-      </div>
-
-      <div class="inputs">
-        <input id="solInput" inputmode="decimal" placeholder="Enter SOL amount" />
-      </div>
-
-      <div style="margin-top:18px;">
-        <div class="howTitle">How To Join The Presale</div>
-        <ol class="howList">
-          <li>Install the Phantom wallet</li>
-          <li>Fund your wallet with SOL</li>
-          <li>Enter the amount you want to contribute</li>
-          <li>Click <strong>BUY WITH SOL</strong></li>
-          <li>Confirm the transaction in Phantom</li>
-          <li>Receive your $WALRUS tokens at launch</li>
-        </ol>
-      </div>
-
-      <div class="fomo">
-        <h3>The Earlier You Enter — The Lower Your Price</h3>
-        <p>Every stage sells at a higher valuation. Once a stage is filled, the price <strong>never returns</strong>.</p>
-      </div>
-
-      <div class="btnRow">
-        <button class="btn btnGhost" id="openInPhantomBtn">Open in Phantom</button>
-        <button class="btn btnPrimary" id="buyBtn">BUY WITH SOL</button>
-      </div>
-
-      <div class="addr" id="depositBox" title="Tap to copy">
-        <small>Presale Deposit Wallet (tap to copy)</small>
-        <strong id="depositAddrText"></strong>
-      </div>
-
-      <a class="miniLink" id="solscanLink" target="_blank" rel="noopener">View on Solscan: Open Explorer</a>
-
-      <div class="note">
-        Tip: On iPhone, the smoothest experience is opening this page inside Phantom’s in-app browser.
-        “BUY WITH SOL” uses a Solana Pay link and will open a compatible wallet to confirm.
-      </div>
-    </div> 
-        <div class="card">
-      <div class="sectionHeader">Tokenomics</div>
-      <p class="miniP"><strong>Total Supply:</strong> 1,000,000,000 $WALRUS</p>
+      <div class="sectionHeader">Why Wasted Walrus</div>
       <ul class="bullets">
-        <li><strong>Presale:</strong> 40%</li>
-        <li><strong>Liquidity:</strong> 25% (locked at launch)</li>
-        <li><strong>Marketing & Growth:</strong> 20%</li>
-        <li><strong>Team:</strong> 5% (vesting)</li>
-        <li><strong>Airdrops & Community Rewards:</strong> 10%</li>
+        <li>Built on the fast and low-fee Solana network</li>
+        <li>No presale or private allocation structure</li>
+        <li>Strong meme identity with viral branding</li>
+        <li>Community-first growth and organic momentum</li>
+        <li>Focused on launch, liquidity, and visibility</li>
       </ul>
-      <p class="miniP" style="margin-top:10px;">No private sale. No hidden mint. No tax.</p>
     </div>
 
     <div class="card">
+      <div class="sectionHeader">Tokenomics</div>
+      <p class="miniP"><strong>Total Supply:</strong> 1,000,000,000 WASTED WALRUS</p>
+      <ul class="bullets">
+        <li><strong>Liquidity:</strong> 70%</li>
+        <li><strong>Marketing & Growth:</strong> 20%</li>
+        <li><strong>Team:</strong> 5%</li>
+        <li><strong>Community Rewards:</strong> 5%</li>
+      </ul>
+      <p class="miniP" style="margin-top:10px;">No private sale. No hidden mint. No tax.</p>
+    </div>
+        <div class="card">
       <div class="sectionHeader">Roadmap</div>
 
-      <div class="phaseTitle">Phase 1 – Accumulation</div>
+      <div class="phaseTitle">Phase 1 – Wake the Walrus</div>
       <ul class="bullets">
         <li>Website launch</li>
-        <li>Presale begins</li>
-        <li>Viral meme rollout</li>
-        <li>Community growth</li>
+        <li>Brand rollout</li>
+        <li>Community building</li>
+        <li>Viral meme push</li>
       </ul>
 
-      <div class="phaseTitle">Phase 2 – Expansion</div>
+      <div class="phaseTitle">Phase 2 – Hit the Water</div>
       <ul class="bullets">
-        <li>Presale completion</li>
+        <li>Token launch</li>
         <li>Liquidity pool creation</li>
-        <li>DEX launch</li>
-        <li>Solana trending push</li>
+        <li>DEX visibility push</li>
+        <li>Community expansion</li>
       </ul>
 
-      <div class="phaseTitle">Phase 3 – Domination</div>
+      <div class="phaseTitle">Phase 3 – Full Send</div>
       <ul class="bullets">
-        <li>CoinGecko listing</li>
-        <li>CoinMarketCap listing</li>
-        <li>Tier 1 influencer campaigns</li> 
-        <li>WALRUS NFT ecosystem</li>
+        <li>Influencer campaigns</li>
+        <li>CoinGecko application</li>
+        <li>CoinMarketCap application</li>
+        <li>Partnership outreach</li>
       </ul>
 
-      <div class="phaseTitle">Phase 4 – Legacy</div>
+      <div class="phaseTitle">Phase 4 – Legend Status</div>
       <ul class="bullets">
-        <li>CEX listings</li>
-        <li>Staking & rewards</li>
-        <li>Global brand partnerships</li>
+        <li>Major meme recognition</li>
+        <li>Ecosystem expansion</li>
+        <li>Listings and broader exposure</li>
       </ul>
     </div>
 
     <div class="card">
       <div class="sectionHeader">Launch Details</div>
-      <p class="miniP">Liquidity will be locked at launch.</p>
-      <p class="miniP"><strong>DEX:</strong> Raydium (target)</p>
-      <p class="miniP">Tokens claimable immediately after presale ends.</p>
-      <p class="miniP">Official contract address will be announced on all social channels.</p>
+      <p class="miniP">No presale will take place.</p>
+      <p class="miniP">Official contract address will be announced only through official channels.</p>
+      <p class="miniP">Liquidity is intended to be locked at launch.</p>
+      <p class="miniP"><strong>Target DEX:</strong> Raydium</p>
     </div>
 
     <div class="card">
       <div class="sectionHeader">Whitepaper</div>
       <p class="miniP">
-        The official $WALRUS whitepaper outlines our vision, tokenomics, presale structure, and roadmap.
+        The official Wasted Walrus whitepaper outlines the vision, tokenomics, launch structure, and roadmap.
       </p>
       <a href="/whitepaper.pdf" target="_blank" class="btn btnPrimary">
         View Full Whitepaper
       </a>
     </div>
-
-    <img class="heroImg" src="IMG_6473.jpeg" alt="$WALRUS handshake art">
+        <img class="heroImg" src="IMG_6473.jpeg" alt="Wasted Walrus secondary art">
 
     <a href="https://x.com/walrusmemecoin" target="_blank" class="xBtn">
       𝕏 Follow @walrusmemecoin
@@ -483,70 +282,5 @@
 
     <div class="footerSpace"></div>
   </div>
-  <script>
-  const DEPOSIT_WALLET = "9RHnZobeZBKSLDaTVEiKk5FewZapSTJfyHnR396d7QEi";
-
-  const STAGE_CAP_SOL = 800;
-  const STAGE_PRICE = 0.0000001; // Stage 1 price
-
-  // Always start at 0 (static). Real raised requires a backend / verified on-chain source.
-  const raised = 186;
-
-  // Render UI (Percent-only display)
-  const percent = (raised / STAGE_CAP_SOL) * 100;
-  const clamped = Math.max(0, Math.min(100, percent));
-
-  document.getElementById("raisedText").innerText = `${Math.floor(clamped)}% / 100%`;
-  document.getElementById("progressPct").textContent = Math.round(clamped) + "%";
-
-  document.getElementById("progressPct").innerText = Math.floor(clamped) + "%";
-  document.getElementById("barFill").style.width = clamped + "%";
-
-  document.getElementById("solscanLink").href = `https://solscan.io/account/${DEPOSIT_WALLET}`;
-  document.getElementById("depositAddrText").innerText = DEPOSIT_WALLET;
-
-  document.getElementById("depositBox").addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(DEPOSIT_WALLET);
-      alert("Copied deposit wallet ✅");
-    } catch (e) {
-      const t = document.createElement("textarea");
-      t.value = DEPOSIT_WALLET;
-      document.body.appendChild(t);
-      t.select();
-      document.execCommand("copy");
-      t.remove();
-      alert("Copied deposit wallet ✅");
-    }
-  });
-
-  function updateEstimate(){
-    const solVal = Number(document.getElementById("solInput").value || 0);
-    const tokens = (solVal > 0) ? Math.floor(solVal / STAGE_PRICE) : 0;
-    document.getElementById("ownedText").innerText = `${tokens.toLocaleString()} WALRUS`;
-  }
-  document.getElementById("solInput").addEventListener("input", updateEstimate);
-  updateEstimate();
-
-  document.getElementById("openInPhantomBtn").addEventListener("click", () => {
-    const url = window.location.href;
-    window.location.href = `https://phantom.app/ul/browse/${encodeURIComponent(url)}`;
-  });
-      document.getElementById("buyBtn").addEventListener("click", () => {
-    const sol = Number(document.getElementById("solInput").value || 0);
-    if (!isFinite(sol) || sol <= 0) {
-      alert("Enter a SOL amount first.");
-      return;
-    }
-
-    const label = encodeURIComponent("$WALRUS Presale");
-    const message = encodeURIComponent("Presale contribution");
-    const amount = encodeURIComponent(sol.toString());
-
-    const solanaPay = `solana:${DEPOSIT_WALLET}?amount=${amount}&label=${label}&message=${message}`;
-    window.location.href = solanaPay;
-  });
-</script>
-
 </body>
 </html>
