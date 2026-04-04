@@ -1,286 +1,761 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Wasted Walrus</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GhisLame MaxWelle</title>
+  <meta name="description" content="GhisLame MaxWelle - a chaotic meme coin landing page for Pump-style launches." />
   <style>
-    :root{
-      --bg:#070a12;
-      --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.08);
-      --stroke:rgba(255,255,255,.12);
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.72);
-      --accent:#d6a24a;
-      --accent2:#f2cf7a;
-      --shadow:0 18px 70px rgba(0,0,0,.55);
-      --radius:22px;
+    :root {
+      --bg1: #0b1020;
+      --bg2: #1a1333;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --text: #f7f7fb;
+      --muted: #b7bad1;
+      --accent: #ff4fa3;
+      --accent2: #7a5cff;
+      --accent3: #ffd166;
+      --good: #7dff9b;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+      --max: 1180px;
     }
 
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      text-align:center;
-      overflow-x:hidden;
-      position:relative;
+    * {
+      box-sizing: border-box;
     }
 
-    .glow{
-      position:fixed;
-      inset:-200px;
-      z-index:-2;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(circle at 20% 30%, rgba(214,162,74,.16), transparent 45%),
-        radial-gradient(circle at 80% 10%, rgba(242,207,122,.12), transparent 45%),
-        radial-gradient(circle at 70% 80%, rgba(214,162,74,.10), transparent 55%);
-      filter: blur(14px);
-      pointer-events:none;
+        radial-gradient(circle at top left, rgba(255, 79, 163, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(122, 92, 255, 0.18), transparent 28%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .wrap{
-      max-width:920px;
-      margin:0 auto;
-      padding:22px 16px 40px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .heroImg{
-      width:min(560px,92vw);
-      border-radius:var(--radius);
-      box-shadow:0 0 0 1px rgba(255,255,255,.10), 0 0 28px rgba(214,162,74,.22);
-      margin:10px auto 12px;
-      display:block;
-    }
-
-    h1{
-      margin:10px 0 6px;
-      font-size:56px;
-      letter-spacing:1px;
-      line-height:1.0;
-    }
-
-    .sub{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-weight:600;
-    }
-
-    .card{
-      background:linear-gradient(180deg, var(--card2), var(--card));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:var(--shadow);
-      border-radius:var(--radius);
-      padding:22px 16px;
-      margin:18px auto;
-      max-width:760px;
-    }
-
-    .sectionHeader{
-      margin: 0 0 10px 0;
-      font-size:22px;
-      font-weight:1000;
-    }
-
-    .miniP{
-      margin: 0 0 10px 0;
-      color:rgba(255,255,255,.82);
-      font-weight:650;
-      line-height:1.6;
-    }
-
-    .bullets{
+    .wrap {
+      width: min(100% - 32px, var(--max));
       margin: 0 auto;
-      max-width:620px;
-      text-align:left;
-      padding-left:18px;
-      line-height:1.6;
-      color:rgba(255,255,255,.86);
-      font-weight:650;
-    }
-        .phaseTitle{
-      margin: 14px 0 6px 0;
-      font-weight:1000;
-      color:rgba(255,255,255,.95);
     }
 
-    .xBtn{
-      display:inline-block;
-      margin:14px auto 0;
-      padding:14px 18px;
-      border-radius:16px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      color:white;
-      text-decoration:none;
-      font-weight:1000;
-      letter-spacing:.2px;
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(10, 12, 22, 0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .btn{
-      display:inline-block;
-      padding:16px 22px;
-      border-radius:16px;
-      border:none;
-      font-weight:1000;
-      font-size:18px;
-      cursor:pointer;
-      letter-spacing:.2px;
-      text-decoration:none;
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
     }
 
-    .btnPrimary{
-      background:linear-gradient(180deg, var(--accent2), var(--accent));
-      color:#1b1204;
-      box-shadow:0 18px 40px rgba(214,162,74,.22);
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
     }
 
-    .trust-badges{
-      margin: 14px 0 6px 0;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:center;
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: var(--shadow);
+      font-size: 18px;
     }
 
-    .badge{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      font-weight:900;
-      color:rgba(255,255,255,.92);
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
-      font-size:13px;
-      letter-spacing:.2px;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
-    .footerSpace{height:10px;}
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      box-shadow: 0 12px 30px rgba(122, 92, 255, 0.35);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero {
+      padding: 72px 0 30px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      color: var(--accent3);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 88px);
+      line-height: 0.95;
+      margin: 0 0 18px;
+      letter-spacing: -2px;
+    }
+
+    .headline-accent {
+      display: block;
+      background: linear-gradient(135deg, #fff, #f8b2d7 45%, #b8a9ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .sub {
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 14px 16px;
+      min-width: 150px;
+      backdrop-filter: blur(12px);
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .stat .value {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+      border: 1px solid var(--card-border);
+      border-radius: 30px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      min-height: 540px;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,79,163,0.18), transparent 24%),
+        radial-gradient(circle at 70% 40%, rgba(122,92,255,0.16), transparent 26%),
+        radial-gradient(circle at 50% 80%, rgba(255,209,102,0.12), transparent 22%);
+      pointer-events: none;
+    }
+
+    .coin-frame {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(8, 10, 18, 0.28);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .coin-image {
+      width: min(100%, 360px);
+      aspect-ratio: 1 / 1;
+      border-radius: 28px;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.14);
+      box-shadow: 0 22px 40px rgba(0,0,0,0.35);
+      background: #161b2f;
+      display: block;
+    }
+
+    .image-placeholder {
+      width: min(100%, 360px);
+      aspect-ratio: 1 / 1;
+      border-radius: 28px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      font-weight: 800;
+      font-size: 28px;
+      color: #fff;
+      border: 2px dashed rgba(255,255,255,0.18);
+      background:
+        linear-gradient(135deg, rgba(255,79,163,0.35), rgba(122,92,255,0.35)),
+        rgba(255,255,255,0.04);
+      box-shadow: 0 22px 40px rgba(0,0,0,0.28);
+    }
+
+    .ticker {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 700;
+      color: var(--accent3);
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 46px);
+      margin: 0 0 12px;
+      letter-spacing: -1px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 0 24px;
+    }
+
+    .tokenomics {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .token-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .token-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .token-item strong {
+      font-size: 16px;
+    }
+
+    .token-item span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .roadmap {
+      display: grid;
+      gap: 14px;
+    }
+
+    .road-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .road-num {
+      min-width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+
+    .road-step h4 {
+      margin: 2px 0 8px;
+      font-size: 18px;
+    }
+
+    .road-step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .cta {
+      margin: 28px 0 60px;
+      padding: 30px;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(255,79,163,0.16), rgba(122,92,255,0.16)),
+        rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: -1px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 20px;
+      line-height: 1.7;
+    }
+
+    .footer {
+      padding: 16px 0 36px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .contract-box {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .contract-pill {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-size: 14px;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .tokenomics,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-card {
+        min-height: unset;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      h1 {
+        line-height: 1;
+      }
+
+      .sub {
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
-
 <body>
-  <div class="glow"></div>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <div class="brand-badge">💋</div>
+        <div>GhisLame MaxWelle</div>
+      </div>
 
-  <div class="wrap">
-    <img class="heroImg" src="IMG_6472.jpeg" alt="Wasted Walrus main art">
-
-    <h1>WASTED WALRUS</h1>
-    <div class="sub">No Presale • Built on Solana • Community Driven</div>
-
-    <div style="margin-top:14px;">
-      <a href="/whitepaper.pdf" target="_blank" class="xBtn">
-        📄 Read Whitepaper
-      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#buy">Buy</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="trust-badges">
-      <span class="badge">Built on Solana ⚡</span>
-      <span class="badge">No Presale 🚫</span>
-      <span class="badge">Community Driven 🥃</span>
-      <span class="badge">Meme Energy Only 🔥</span>
-      <span class="badge">Liquidity Locked at Launch 🔒</span>
-    </div>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">⚡ Pump Fun Meme Launch • Zero Utility • Maximum Chaos</div>
+
+          <h1>
+            GhisLame
+            <span class="headline-accent">MaxWelle</span>
+          </h1>
+
+          <p class="sub">
+            The most suspiciously legendary meme coin on the timeline. No promises, no utility,
+            no seriousness — just pure internet chaos, cursed energy, and a launch built to
+            send harder than common sense.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#buy">Buy on Pump</a>
+            <a class="btn btn-secondary" href="#tokenomics">View Tokenomics</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="label">Ticker</div>
+              <div class="value">$GLMW</div>
+            </div>
+            <div class="stat">
+              <div class="label">Chain</div>
+              <div class="value">Solana</div>
+            </div>
+            <div class="stat">
+              <div class="label">Vibe</div>
+              <div class="value">Degenerate</div>
+            </div>
+            <div class="stat">
+              <div class="label">Status</div>
+              <div class="value">Live Soon</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="coin-frame">
+            <!-- Replace this placeholder with your actual image -->
+            <!-- Example:
+            <img class="coin-image" src="ghislame-maxwelle.png" alt="GhisLame MaxWelle coin art" />
+            -->
+            <div class="image-placeholder">
+              DROP YOUR<br />COIN ART HERE
+            </div>
+
+            <div class="ticker">💀 $GLMW • GhisLame MaxWelle</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="wrap">
+        <h2 class="section-title">Why this coin exists</h2>
+        <p class="section-sub">
+          Because the internet rewards chaos, cursed visuals, and names that should not exist.
+          GhisLame MaxWelle is a meme-first launch built for attention, screenshots, and
+          absurd momentum. Nothing here is serious. That is exactly the point.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Unhinged Branding</h3>
+            <p>
+              Dirty meme energy, cursed art, and a name people instantly remember.
+              Perfect for first-post shock value and degen replies.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Pump Ready</h3>
+            <p>
+              Made for quick launch pages, fast sharing, and easy edits.
+              Swap in your Pump link, contract address, and coin art and go.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>No Fake Utility</h3>
+            <p>
+              No roadmap pretending to be serious. No fake promises.
+              Just community chaos, memes, and whatever the market decides.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tokenomics" class="section">
+      <div class="wrap tokenomics">
         <div class="card">
-      <div class="sectionHeader">About Wasted Walrus</div>
-      <p class="miniP" style="max-width:640px;margin:auto;">
-        Wasted Walrus is a community-driven Solana meme coin built for chaos, culture, and pure viral energy.<br><br>
+          <h2 class="section-title">Tokenomics</h2>
+          <p class="section-sub">
+            Keep it simple and memeable. Edit these numbers however you want.
+          </p>
 
-        No presale. No insiders. No complicated entry structure.<br><br>
+          <div class="token-list">
+            <div class="token-item">
+              <div>
+                <strong>Total Supply</strong><br />
+                <span>Full meme supply</span>
+              </div>
+              <div><strong>1,000,000,000</strong></div>
+            </div>
 
-        Just a strong brand, a loud community, and a walrus that refuses to stay sober while the charts run.<br><br>
+            <div class="token-item">
+              <div>
+                <strong>Liquidity</strong><br />
+                <span>Launched on Pump</span>
+              </div>
+              <div><strong>Locked at launch</strong></div>
+            </div>
 
-        Wasted Walrus is built around meme identity, fast execution, and community momentum — with the goal of creating a coin people actually want to post, trade, and rally behind.<br><br>
+            <div class="token-item">
+              <div>
+                <strong>Tax</strong><br />
+                <span>Keep it clean</span>
+              </div>
+              <div><strong>0 / 0</strong></div>
+            </div>
 
-        This is not a staged sale. This is the start of the movement.
-      </p>
+            <div class="token-item">
+              <div>
+                <strong>Utility</strong><br />
+                <span>Be honest</span>
+              </div>
+              <div><strong>None</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="roadmap" class="card">
+          <h2 class="section-title">Roadmap</h2>
+          <p class="section-sub">
+            Dumb, simple, effective.
+          </p>
+
+          <div class="roadmap">
+            <div class="road-step">
+              <div class="road-num">1</div>
+              <div>
+                <h4>Launch the chaos</h4>
+                <p>Deploy on Pump, drop the art, and make the first cursed post count.</p>
+              </div>
+            </div>
+
+            <div class="road-step">
+              <div class="road-num">2</div>
+              <div>
+                <h4>Memes everywhere</h4>
+                <p>Push screenshots, replies, reactions, sticker edits, and community jokes.</p>
+              </div>
+            </div>
+
+            <div class="road-step">
+              <div class="road-num">3</div>
+              <div>
+                <h4>DEX visibility</h4>
+                <p>Get the banner up, keep the art consistent, and make the page look legit enough to ape.</p>
+              </div>
+            </div>
+
+            <div class="road-step">
+              <div class="road-num">4</div>
+              <div>
+                <h4>Moon or die trying</h4>
+                <p>No guarantees. No cope. Either the timeline embraces the cursed energy or it doesn’t.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="buy" class="section">
+      <div class="wrap">
+        <div class="cta">
+          <h2>Ready to launch?</h2>
+          <p>
+            Replace the buttons below with your live Pump link, Telegram, Dex page,
+            or anything else you want people clicking the second they land here.
+          </p>
+
+          <div class="hero-actions" style="justify-content:center;">
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Buy on Pump</a>
+            <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Join Telegram</a>
+          </div>
+
+          <div class="contract-box">
+            <div class="contract-pill mono" id="contractText">
+              CA: Paste your contract address here
+            </div>
+            <button class="btn btn-secondary" id="copyBtn" type="button">Copy CA</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <div>
+      © 2026 GhisLame MaxWelle • Built for memes, not fundamentals.
     </div>
+  </footer>
 
-    <div class="card">
-      <div class="sectionHeader">Why Wasted Walrus</div>
-      <ul class="bullets">
-        <li>Built on the fast and low-fee Solana network</li>
-        <li>No presale or private allocation structure</li>
-        <li>Strong meme identity with viral branding</li>
-        <li>Community-first growth and organic momentum</li>
-        <li>Focused on launch, liquidity, and visibility</li>
-      </ul>
-    </div>
+  <script>
+    const copyBtn = document.getElementById("copyBtn");
+    const contractText = document.getElementById("contractText");
 
-    <div class="card">
-      <div class="sectionHeader">Tokenomics</div>
-      <p class="miniP"><strong>Total Supply:</strong> 1,000,000,000 WASTED WALRUS</p>
-      <ul class="bullets">
-        <li><strong>Liquidity:</strong> 70%</li>
-        <li><strong>Marketing & Growth:</strong> 20%</li>
-        <li><strong>Team:</strong> 5%</li>
-        <li><strong>Community Rewards:</strong> 5%</li>
-      </ul>
-      <p class="miniP" style="margin-top:10px;">No private sale. No hidden mint. No tax.</p>
-    </div>
-        <div class="card">
-      <div class="sectionHeader">Roadmap</div>
+    copyBtn.addEventListener("click", async () => {
+      const text = contractText.textContent.replace("CA:", "").trim();
+      if (!text || text.toLowerCase().includes("paste your contract")) {
+        alert("Add your contract address first.");
+        return;
+      }
 
-      <div class="phaseTitle">Phase 1 – Wake the Walrus</div>
-      <ul class="bullets">
-        <li>Website launch</li>
-        <li>Brand rollout</li>
-        <li>Community building</li>
-        <li>Viral meme push</li>
-      </ul>
-
-      <div class="phaseTitle">Phase 2 – Hit the Water</div>
-      <ul class="bullets">
-        <li>Token launch</li>
-        <li>Liquidity pool creation</li>
-        <li>DEX visibility push</li>
-        <li>Community expansion</li>
-      </ul>
-
-      <div class="phaseTitle">Phase 3 – Full Send</div>
-      <ul class="bullets">
-        <li>Influencer campaigns</li>
-        <li>CoinGecko application</li>
-        <li>CoinMarketCap application</li>
-        <li>Partnership outreach</li>
-      </ul>
-
-      <div class="phaseTitle">Phase 4 – Legend Status</div>
-      <ul class="bullets">
-        <li>Major meme recognition</li>
-        <li>Ecosystem expansion</li>
-        <li>Listings and broader exposure</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="sectionHeader">Launch Details</div>
-      <p class="miniP">No presale will take place.</p>
-      <p class="miniP">Official contract address will be announced only through official channels.</p>
-      <p class="miniP">Liquidity is intended to be locked at launch.</p>
-      <p class="miniP"><strong>Target DEX:</strong> Raydium</p>
-    </div>
-
-    <div class="card">
-      <div class="sectionHeader">Whitepaper</div>
-      <p class="miniP">
-        The official Wasted Walrus whitepaper outlines the vision, tokenomics, launch structure, and roadmap.
-      </p>
-      <a href="/whitepaper.pdf" target="_blank" class="btn btnPrimary">
-        View Full Whitepaper
-      </a>
-    </div>
-        <img class="heroImg" src="IMG_6473.jpeg" alt="Wasted Walrus secondary art">
-
-    <a href="https://x.com/walrusmemecoin" target="_blank" class="xBtn">
-      𝕏 Follow @walrusmemecoin
-    </a>
-
-    <div class="footerSpace"></div>
-  </div>
+      try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = "Copied";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy CA";
+        }, 1400);
+      } catch (err) {
+        alert("Could not copy. Please copy it manually.");
+      }
+    });
+  </script>
 </body>
 </html>
