@@ -4,505 +4,423 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GhisLame MaxWelle</title>
-  <meta name="description" content="GhisLame MaxWelle - a chaotic meme coin landing page for Pump-style launches." />
+  <meta name="description" content="GhisLame MaxWelle official meme coin website." />
   <style>
-    :root {
-      --bg1: #0b1020;
-      --bg2: #1a1333;
-      --card: rgba(255, 255, 255, 0.08);
-      --card-border: rgba(255, 255, 255, 0.14);
-      --text: #f7f7fb;
-      --muted: #b7bad1;
-      --accent: #ff4fa3;
-      --accent2: #7a5cff;
-      --accent3: #ffd166;
-      --good: #7dff9b;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-      --radius: 24px;
-      --max: 1180px;
+    :root{
+      --bg:#08111f;
+      --bg2:#111a2c;
+      --panel:rgba(255,255,255,0.06);
+      --panel2:rgba(255,255,255,0.08);
+      --border:rgba(255,255,255,0.12);
+      --text:#f6f7fb;
+      --muted:#aeb5c7;
+      --accent:#ff4d8d;
+      --accent2:#7b61ff;
+      --gold:#ffd76a;
+      --shadow:0 20px 60px rgba(0,0,0,0.35);
+      --radius:24px;
+      --max:1180px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      color: var(--text);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, Arial, Helvetica, sans-serif;
+      color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255, 79, 163, 0.18), transparent 30%),
-        radial-gradient(circle at top right, rgba(122, 92, 255, 0.18), transparent 28%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
-      min-height: 100vh;
-      overflow-x: hidden;
+        radial-gradient(circle at top left, rgba(255,77,141,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(123,97,255,0.16), transparent 25%),
+        linear-gradient(135deg,var(--bg),var(--bg2));
+      min-height:100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    a{text-decoration:none;color:inherit}
+    .wrap{width:min(calc(100% - 32px), var(--max));margin:0 auto}
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(14px);
+      background:rgba(8,12,20,0.68);
+      border-bottom:1px solid rgba(255,255,255,0.08);
     }
 
-    .wrap {
-      width: min(100% - 32px, var(--max));
-      margin: 0 auto;
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      padding:16px 0;
     }
 
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(10, 12, 22, 0.65);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:.3px;
     }
 
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 0;
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:var(--shadow);
+      font-size:18px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.4px;
+    .nav-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
     }
 
-    .brand-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: var(--shadow);
-      font-size: 18px;
+    .nav-links a:hover{color:var(--text)}
+
+    .hero{
+      padding:72px 0 36px;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:28px;
+      align-items:center;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      font-size: 14px;
-      transition: 0.2s ease;
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      color:var(--gold);
+      font-size:13px;
+      margin-bottom:18px;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
+    h1{
+      margin:0 0 18px;
+      font-size:clamp(44px,8vw,88px);
+      line-height:.95;
+      letter-spacing:-2px;
     }
 
-    .btn {
-      border: 0;
-      border-radius: 999px;
-      padding: 14px 22px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    .headline-accent{
+      display:block;
+      background:linear-gradient(135deg,#fff,#ffc3dc 40%,#c7bcff 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      opacity: 0.96;
+    .sub{
+      margin:0 0 28px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.7;
+      max-width:720px;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: white;
-      box-shadow: 0 12px 30px rgba(122, 92, 255, 0.35);
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:22px;
     }
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.08);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,0.12);
+    .btn{
+      border:0;
+      border-radius:999px;
+      padding:14px 22px;
+      font-weight:800;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:.18s ease;
     }
 
-    .hero {
-      padding: 72px 0 30px;
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{
+      color:#fff;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 12px 30px rgba(123,97,255,.35);
+    }
+    .btn-secondary{
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
+    .hero-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.08);
-      color: var(--accent3);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 13px;
-      margin-bottom: 18px;
+    .stat{
+      min-width:150px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:var(--panel);
+      border:1px solid var(--border);
+      backdrop-filter:blur(10px);
     }
 
-    h1 {
-      font-size: clamp(42px, 8vw, 88px);
-      line-height: 0.95;
-      margin: 0 0 18px;
-      letter-spacing: -2px;
+    .stat .label{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:6px;
     }
 
-    .headline-accent {
-      display: block;
-      background: linear-gradient(135deg, #fff, #f8b2d7 45%, #b8a9ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
+    .stat .value{
+      font-size:18px;
+      font-weight:800;
     }
 
-    .sub {
-      font-size: 18px;
-      line-height: 1.65;
-      color: var(--muted);
-      max-width: 700px;
-      margin-bottom: 28px;
+    .hero-card{
+      min-height:560px;
+      padding:20px;
+      border-radius:30px;
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 22px;
-    }
-
-    .hero-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .stat {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 14px 16px;
-      min-width: 150px;
-      backdrop-filter: blur(12px);
-    }
-
-    .stat .label {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 6px;
-    }
-
-    .stat .value {
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
-      border: 1px solid var(--card-border);
-      border-radius: 30px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      min-height: 540px;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -30%;
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-30%;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,79,163,0.18), transparent 24%),
-        radial-gradient(circle at 70% 40%, rgba(122,92,255,0.16), transparent 26%),
-        radial-gradient(circle at 50% 80%, rgba(255,209,102,0.12), transparent 22%);
-      pointer-events: none;
+        radial-gradient(circle at 25% 25%, rgba(255,77,141,.18), transparent 22%),
+        radial-gradient(circle at 70% 35%, rgba(123,97,255,.16), transparent 24%),
+        radial-gradient(circle at 55% 80%, rgba(255,215,106,.12), transparent 20%);
+      pointer-events:none;
     }
 
-    .coin-frame {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: 100%;
-      border-radius: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(8, 10, 18, 0.28);
-      border: 1px solid rgba(255,255,255,0.08);
+    .coin-frame{
+      position:relative;
+      z-index:2;
+      width:100%;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      border-radius:24px;
+      background:rgba(8,10,18,.25);
+      border:1px solid rgba(255,255,255,.08);
     }
 
-    .coin-image {
-      width: min(100%, 360px);
-      aspect-ratio: 1 / 1;
-      border-radius: 28px;
-      object-fit: cover;
-      border: 2px solid rgba(255,255,255,0.14);
-      box-shadow: 0 22px 40px rgba(0,0,0,0.35);
-      background: #161b2f;
-      display: block;
+    .coin-image{
+      width:min(100%, 420px);
+      aspect-ratio:1 / 1;
+      object-fit:cover;
+      border-radius:28px;
+      display:block;
+      border:2px solid rgba(255,255,255,.12);
+      box-shadow:0 24px 44px rgba(0,0,0,.34);
+      background:#182132;
     }
 
-    .image-placeholder {
-      width: min(100%, 360px);
-      aspect-ratio: 1 / 1;
-      border-radius: 28px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 24px;
-      font-weight: 800;
-      font-size: 28px;
-      color: #fff;
-      border: 2px dashed rgba(255,255,255,0.18);
+    .ticker{
+      margin-top:20px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:800;
+      color:var(--gold);
+    }
+
+    .section{padding:34px 0}
+    .section-title{
+      margin:0 0 12px;
+      font-size:clamp(28px,4vw,46px);
+      letter-spacing:-1px;
+    }
+    .section-sub{
+      margin:0 0 24px;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      max-width:760px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      padding:22px;
+      border-radius:24px;
+      background:var(--panel);
+      border:1px solid var(--border);
+      backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
+    }
+
+    .card h3{
+      margin:0 0 12px;
+      font-size:20px;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .token-list,
+    .roadmap{
+      display:grid;
+      gap:14px;
+    }
+
+    .token-item,
+    .road-step{
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .token-item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .token-item strong{
+      font-size:16px;
+    }
+
+    .token-item span{
+      display:block;
+      color:var(--muted);
+      font-size:14px;
+      margin-top:5px;
+    }
+
+    .road-step{
+      display:flex;
+      gap:14px;
+    }
+
+    .road-num{
+      width:42px;
+      height:42px;
+      min-width:42px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
+    .road-step h4{
+      margin:2px 0 8px;
+      font-size:18px;
+    }
+
+    .road-step p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .ca-box{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+    }
+
+    .ca-pill{
+      padding:12px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:14px;
+      overflow-wrap:anywhere;
+    }
+
+    .cta{
+      margin:30px 0 60px;
+      padding:30px;
+      border-radius:30px;
+      text-align:center;
       background:
-        linear-gradient(135deg, rgba(255,79,163,0.35), rgba(122,92,255,0.35)),
-        rgba(255,255,255,0.04);
-      box-shadow: 0 22px 40px rgba(0,0,0,0.28);
+        linear-gradient(135deg, rgba(255,77,141,.16), rgba(123,97,255,.16)),
+        rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
     }
 
-    .ticker {
-      margin-top: 20px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-weight: 700;
-      color: var(--accent3);
+    .cta h2{
+      margin:0 0 10px;
+      font-size:clamp(28px,4vw,48px);
+      letter-spacing:-1px;
     }
 
-    .section {
-      padding: 34px 0;
+    .cta p{
+      max-width:760px;
+      margin:0 auto 20px;
+      color:var(--muted);
+      line-height:1.7;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .footer{
+      padding:10px 0 38px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 22px;
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .section-title {
-      font-size: clamp(28px, 4vw, 46px);
-      margin: 0 0 12px;
-      letter-spacing: -1px;
-    }
-
-    .section-sub {
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.7;
-      max-width: 760px;
-      margin: 0 0 24px;
-    }
-
-    .tokenomics {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .token-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .token-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 16px 18px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .token-item strong {
-      font-size: 16px;
-    }
-
-    .token-item span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .roadmap {
-      display: grid;
-      gap: 14px;
-    }
-
-    .road-step {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 18px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .road-num {
-      min-width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-    }
-
-    .road-step h4 {
-      margin: 2px 0 8px;
-      font-size: 18px;
-    }
-
-    .road-step p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .cta {
-      margin: 28px 0 60px;
-      padding: 30px;
-      border-radius: 30px;
-      background:
-        linear-gradient(135deg, rgba(255,79,163,0.16), rgba(122,92,255,0.16)),
-        rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .cta h2 {
-      margin: 0 0 10px;
-      font-size: clamp(28px, 4vw, 48px);
-      letter-spacing: -1px;
-    }
-
-    .cta p {
-      color: var(--muted);
-      max-width: 720px;
-      margin: 0 auto 20px;
-      line-height: 1.7;
-    }
-
-    .footer {
-      padding: 16px 0 36px;
-      color: var(--muted);
-      font-size: 14px;
-      text-align: center;
-    }
-
-    .mono {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    }
-
-    .contract-box {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .contract-pill {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 999px;
-      padding: 12px 16px;
-      font-size: 14px;
-      max-width: 100%;
-      overflow-wrap: anywhere;
-    }
-
-    @media (max-width: 980px) {
+    @media (max-width:980px){
       .hero-grid,
-      .tokenomics,
-      .grid-3 {
-        grid-template-columns: 1fr;
+      .grid-3,
+      .two-col{
+        grid-template-columns:1fr;
       }
-
-      .hero {
-        padding-top: 42px;
-      }
-
-      .hero-card {
-        min-height: unset;
-      }
+      .hero-card{min-height:unset}
+      .hero{padding-top:42px}
     }
 
-    @media (max-width: 640px) {
-      .nav-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-
-      h1 {
-        line-height: 1;
-      }
-
-      .sub {
-        font-size: 16px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
+    @media (max-width:640px){
+      .nav-inner{flex-direction:column;align-items:flex-start}
+      .hero-actions{flex-direction:column}
+      .btn{width:100%}
+      .sub{font-size:16px}
     }
   </style>
 </head>
@@ -510,15 +428,14 @@
   <nav class="nav">
     <div class="wrap nav-inner">
       <div class="brand">
-        <div class="brand-badge">💋</div>
+        <div class="brand-mark">💋</div>
         <div>GhisLame MaxWelle</div>
       </div>
-
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#tokenomics">Tokenomics</a>
         <a href="#roadmap">Roadmap</a>
-        <a href="#buy">Buy</a>
+        <a href="#contract">Contract</a>
       </div>
     </div>
   </nav>
@@ -527,7 +444,7 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">⚡ Pump Fun Meme Launch • Zero Utility • Maximum Chaos</div>
+          <div class="eyebrow">⚡ Solana Meme Coin • Professional Landing Page • Built for Visibility</div>
 
           <h1>
             GhisLame
@@ -535,14 +452,14 @@
           </h1>
 
           <p class="sub">
-            The most suspiciously legendary meme coin on the timeline. No promises, no utility,
-            no seriousness — just pure internet chaos, cursed energy, and a launch built to
-            send harder than common sense.
+            A high-attention meme coin built around unforgettable branding, sharp visuals,
+            and pure internet chaos. No fake utility. No corporate nonsense. Just a clean,
+            professional launch page with cursed energy and serious meme potential.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#buy">Buy on Pump</a>
-            <a class="btn btn-secondary" href="#tokenomics">View Tokenomics</a>
+            <a class="btn btn-primary" href="#contract">View Contract</a>
+            <a class="btn btn-secondary" href="#tokenomics">Read Tokenomics</a>
           </div>
 
           <div class="hero-stats">
@@ -555,26 +472,19 @@
               <div class="value">Solana</div>
             </div>
             <div class="stat">
-              <div class="label">Vibe</div>
-              <div class="value">Degenerate</div>
+              <div class="label">Category</div>
+              <div class="value">Meme Coin</div>
             </div>
             <div class="stat">
-              <div class="label">Status</div>
-              <div class="value">Live Soon</div>
+              <div class="label">Launch Type</div>
+              <div class="value">Community Driven</div>
             </div>
           </div>
         </div>
 
         <div class="hero-card">
           <div class="coin-frame">
-            <!-- Replace this placeholder with your actual image -->
-            <!-- Example:
-            <img class="coin-image" src="ghislame-maxwelle.png" alt="GhisLame MaxWelle coin art" />
-            -->
-            <div class="image-placeholder">
-              DROP YOUR<br />COIN ART HERE
-            </div>
-
+            <img class="coin-image" src="ghis.jpg.PNG" alt="GhisLame MaxWelle" />
             <div class="ticker">💀 $GLMW • GhisLame MaxWelle</div>
           </div>
         </div>
@@ -583,35 +493,33 @@
 
     <section id="about" class="section">
       <div class="wrap">
-        <h2 class="section-title">Why this coin exists</h2>
+        <h2 class="section-title">About the project</h2>
         <p class="section-sub">
-          Because the internet rewards chaos, cursed visuals, and names that should not exist.
-          GhisLame MaxWelle is a meme-first launch built for attention, screenshots, and
-          absurd momentum. Nothing here is serious. That is exactly the point.
+          GhisLame MaxWelle is designed as a pure meme-first asset with a strong visual identity,
+          recognizable character art, and a polished presentation layer. The goal is simple:
+          create a coin people instantly remember, screenshot, and share.
         </p>
 
         <div class="grid-3">
           <div class="card">
-            <h3>Unhinged Branding</h3>
+            <h3>Recognizable Branding</h3>
             <p>
-              Dirty meme energy, cursed art, and a name people instantly remember.
-              Perfect for first-post shock value and degen replies.
+              A memorable character, a twisted name, and a visual identity that stands out
+              instantly across listings, screenshots, and social posts.
             </p>
           </div>
-
           <div class="card">
-            <h3>Pump Ready</h3>
+            <h3>Clean Presentation</h3>
             <p>
-              Made for quick launch pages, fast sharing, and easy edits.
-              Swap in your Pump link, contract address, and coin art and go.
+              Built to look polished and intentional. Strong first impressions matter, and this
+              page is designed to feel sharp, fast, and launch-ready.
             </p>
           </div>
-
           <div class="card">
-            <h3>No Fake Utility</h3>
+            <h3>Meme-First Concept</h3>
             <p>
-              No roadmap pretending to be serious. No fake promises.
-              Just community chaos, memes, and whatever the market decides.
+              This project embraces what actually drives attention online: visual shock value,
+              cursed humor, replayability, and easy recognition.
             </p>
           </div>
         </div>
@@ -619,42 +527,42 @@
     </section>
 
     <section id="tokenomics" class="section">
-      <div class="wrap tokenomics">
+      <div class="wrap two-col">
         <div class="card">
           <h2 class="section-title">Tokenomics</h2>
           <p class="section-sub">
-            Keep it simple and memeable. Edit these numbers however you want.
+            Simple, direct, and easy to understand.
           </p>
 
           <div class="token-list">
             <div class="token-item">
               <div>
-                <strong>Total Supply</strong><br />
-                <span>Full meme supply</span>
+                <strong>Total Supply</strong>
+                <span>Fixed meme supply</span>
               </div>
               <div><strong>1,000,000,000</strong></div>
             </div>
 
             <div class="token-item">
               <div>
-                <strong>Liquidity</strong><br />
-                <span>Launched on Pump</span>
+                <strong>Liquidity</strong>
+                <span>Market launch liquidity</span>
               </div>
-              <div><strong>Locked at launch</strong></div>
+              <div><strong>Launch Based</strong></div>
             </div>
 
             <div class="token-item">
               <div>
-                <strong>Tax</strong><br />
-                <span>Keep it clean</span>
+                <strong>Taxes</strong>
+                <span>Clean setup</span>
               </div>
               <div><strong>0 / 0</strong></div>
             </div>
 
             <div class="token-item">
               <div>
-                <strong>Utility</strong><br />
-                <span>Be honest</span>
+                <strong>Utility</strong>
+                <span>Meme and community</span>
               </div>
               <div><strong>None</strong></div>
             </div>
@@ -664,39 +572,39 @@
         <div id="roadmap" class="card">
           <h2 class="section-title">Roadmap</h2>
           <p class="section-sub">
-            Dumb, simple, effective.
+            Straightforward launch structure.
           </p>
 
           <div class="roadmap">
             <div class="road-step">
               <div class="road-num">1</div>
               <div>
-                <h4>Launch the chaos</h4>
-                <p>Deploy on Pump, drop the art, and make the first cursed post count.</p>
+                <h4>Brand establishment</h4>
+                <p>Launch the site, lock the visual identity, and make the project instantly recognizable.</p>
               </div>
             </div>
 
             <div class="road-step">
               <div class="road-num">2</div>
               <div>
-                <h4>Memes everywhere</h4>
-                <p>Push screenshots, replies, reactions, sticker edits, and community jokes.</p>
+                <h4>Community attention</h4>
+                <p>Drive impressions with strong art, memorable naming, and consistent presentation.</p>
               </div>
             </div>
 
             <div class="road-step">
               <div class="road-num">3</div>
               <div>
-                <h4>DEX visibility</h4>
-                <p>Get the banner up, keep the art consistent, and make the page look legit enough to ape.</p>
+                <h4>Market expansion</h4>
+                <p>Use polished listings, banners, and assets to support stronger visibility across platforms.</p>
               </div>
             </div>
 
             <div class="road-step">
               <div class="road-num">4</div>
               <div>
-                <h4>Moon or die trying</h4>
-                <p>No guarantees. No cope. Either the timeline embraces the cursed energy or it doesn’t.</p>
+                <h4>Momentum or extinction</h4>
+                <p>No false promises. The market decides what lives and what disappears.</p>
               </div>
             </div>
           </div>
@@ -704,24 +612,17 @@
       </div>
     </section>
 
-    <section id="buy" class="section">
+    <section id="contract" class="section">
       <div class="wrap">
         <div class="cta">
-          <h2>Ready to launch?</h2>
+          <h2>Contract Information</h2>
           <p>
-            Replace the buttons below with your live Pump link, Telegram, Dex page,
-            or anything else you want people clicking the second they land here.
+            Add your final contract address below once live. This section is kept simple and professional
+            so the page remains clean, credible, and easy to use.
           </p>
 
-          <div class="hero-actions" style="justify-content:center;">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Buy on Pump</a>
-            <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Join Telegram</a>
-          </div>
-
-          <div class="contract-box">
-            <div class="contract-pill mono" id="contractText">
-              CA: Paste your contract address here
-            </div>
+          <div class="ca-box" style="justify-content:center;">
+            <div class="ca-pill" id="caText">CA: Paste contract address here</div>
             <button class="btn btn-secondary" id="copyBtn" type="button">Copy CA</button>
           </div>
         </div>
@@ -730,30 +631,25 @@
   </main>
 
   <footer class="footer wrap">
-    <div>
-      © 2026 GhisLame MaxWelle • Built for memes, not fundamentals.
-    </div>
+    © 2026 GhisLame MaxWelle • All rights reserved.
   </footer>
 
   <script>
-    const copyBtn = document.getElementById("copyBtn");
-    const contractText = document.getElementById("contractText");
+    const copyBtn = document.getElementById('copyBtn');
+    const caText = document.getElementById('caText');
 
-    copyBtn.addEventListener("click", async () => {
-      const text = contractText.textContent.replace("CA:", "").trim();
-      if (!text || text.toLowerCase().includes("paste your contract")) {
-        alert("Add your contract address first.");
+    copyBtn.addEventListener('click', async () => {
+      const text = caText.textContent.replace('CA:', '').trim();
+      if (!text || text.toLowerCase().includes('paste contract')) {
+        alert('Add your contract address first.');
         return;
       }
-
       try {
         await navigator.clipboard.writeText(text);
-        copyBtn.textContent = "Copied";
-        setTimeout(() => {
-          copyBtn.textContent = "Copy CA";
-        }, 1400);
-      } catch (err) {
-        alert("Could not copy. Please copy it manually.");
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => copyBtn.textContent = 'Copy CA', 1400);
+      } catch (e) {
+        alert('Could not copy. Please copy manually.');
       }
     });
   </script>
