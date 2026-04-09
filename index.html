@@ -1,657 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GhisLame MaxWelle</title>
-  <meta name="description" content="GhisLame MaxWelle official meme coin website." />
-  <style>
-    :root{
-      --bg:#08111f;
-      --bg2:#111a2c;
-      --panel:rgba(255,255,255,0.06);
-      --panel2:rgba(255,255,255,0.08);
-      --border:rgba(255,255,255,0.12);
-      --text:#f6f7fb;
-      --muted:#aeb5c7;
-      --accent:#ff4d8d;
-      --accent2:#7b61ff;
-      --gold:#ffd76a;
-      --shadow:0 20px 60px rgba(0,0,0,0.35);
-      --radius:24px;
-      --max:1180px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Perro</title>
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter, Arial, Helvetica, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(255,77,141,0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(123,97,255,0.16), transparent 25%),
-        linear-gradient(135deg,var(--bg),var(--bg2));
-      min-height:100vh;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    a{text-decoration:none;color:inherit}
-    .wrap{width:min(calc(100% - 32px), var(--max));margin:0 auto}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #1a1405, #050403);
+  color: #fff;
+  overflow-x: hidden;
+}
 
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:100;
-      backdrop-filter:blur(14px);
-      background:rgba(8,12,20,0.68);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
+/* BACKGROUND GLOW */
+body::before {
+  content: "";
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,200,80,0.25), transparent);
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(80px);
+  z-index: 0;
+}
 
-    .nav-inner{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      padding:16px 0;
-    }
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 8%;
+  position: relative;
+  z-index: 2;
+}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:800;
-      letter-spacing:.3px;
-    }
+.logo {
+  font-weight: 900;
+  font-size: 24px;
+  color: #ffd86b;
+}
 
-    .brand-mark{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:var(--shadow);
-      font-size:18px;
-    }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  opacity: 0.8;
+}
 
-    .nav-links{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      color:var(--muted);
-      font-size:14px;
-    }
+nav a:hover {
+  opacity: 1;
+}
 
-    .nav-links a:hover{color:var(--text)}
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  position: relative;
+  z-index: 2;
+}
 
-    .hero{
-      padding:72px 0 36px;
-    }
+.hero h1 {
+  font-size: 80px;
+  color: #ffd86b;
+  text-shadow: 0 0 25px rgba(255,200,80,0.5);
+}
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:28px;
-      align-items:center;
-    }
+.hero p {
+  margin-top: 10px;
+  opacity: 0.8;
+}
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.12);
-      color:var(--gold);
-      font-size:13px;
-      margin-bottom:18px;
-    }
+/* IMAGE */
+.hero-img-container {
+  margin: 50px auto;
+  width: 320px;
+  position: relative;
+}
 
-    h1{
-      margin:0 0 18px;
-      font-size:clamp(44px,8vw,88px);
-      line-height:.95;
-      letter-spacing:-2px;
-    }
+.hero-img-container::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle, rgba(255,200,80,0.4), transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+}
 
-    .headline-accent{
-      display:block;
-      background:linear-gradient(135deg,#fff,#ffc3dc 40%,#c7bcff 100%);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-      color:transparent;
-    }
+.hero-img {
+  width: 100%;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
 
-    .sub{
-      margin:0 0 28px;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.7;
-      max-width:720px;
-    }
+  box-shadow:
+    0 0 40px rgba(255,200,80,0.4),
+    0 0 100px rgba(255,200,80,0.2);
 
-    .hero-actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-bottom:22px;
-    }
+  transition: 0.3s;
+}
 
-    .btn{
-      border:0;
-      border-radius:999px;
-      padding:14px 22px;
-      font-weight:800;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      transition:.18s ease;
-    }
+.hero-img:hover {
+  transform: scale(1.05);
+}
 
-    .btn:hover{transform:translateY(-1px)}
-    .btn-primary{
-      color:#fff;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 12px 30px rgba(123,97,255,.35);
-    }
-    .btn-secondary{
-      color:var(--text);
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-    }
+/* BUTTONS */
+.buttons {
+  margin-top: 30px;
+}
 
-    .hero-stats{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .stat{
-      min-width:150px;
-      padding:14px 16px;
-      border-radius:18px;
-      background:var(--panel);
-      border:1px solid var(--border);
-      backdrop-filter:blur(10px);
-    }
+.btn-primary {
+  background: #ffd86b;
+  color: #000;
+}
 
-    .stat .label{
-      color:var(--muted);
-      font-size:12px;
-      margin-bottom:6px;
-    }
+.btn-secondary {
+  border: 1px solid #ffd86b;
+  color: #ffd86b;
+}
 
-    .stat .value{
-      font-size:18px;
-      font-weight:800;
-    }
+/* SECTION */
+.section {
+  padding: 80px 10%;
+  text-align: center;
+}
 
-    .hero-card{
-      min-height:560px;
-      padding:20px;
-      border-radius:30px;
-      position:relative;
-      overflow:hidden;
-      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-    }
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #ffd86b;
+}
 
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-30%;
-      background:
-        radial-gradient(circle at 25% 25%, rgba(255,77,141,.18), transparent 22%),
-        radial-gradient(circle at 70% 35%, rgba(123,97,255,.16), transparent 24%),
-        radial-gradient(circle at 55% 80%, rgba(255,215,106,.12), transparent 20%);
-      pointer-events:none;
-    }
+.section p {
+  max-width: 600px;
+  margin: auto;
+  opacity: 0.8;
+}
 
-    .coin-frame{
-      position:relative;
-      z-index:2;
-      width:100%;
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-      border-radius:24px;
-      background:rgba(8,10,18,.25);
-      border:1px solid rgba(255,255,255,.08);
-    }
+/* TOKENOMICS */
+.token-box {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
 
-    .coin-image{
-      width:min(100%, 420px);
-      aspect-ratio:1 / 1;
-      object-fit:cover;
-      border-radius:28px;
-      display:block;
-      border:2px solid rgba(255,255,255,.12);
-      box-shadow:0 24px 44px rgba(0,0,0,.34);
-      background:#182132;
-    }
+.token-item {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 15px;
+}
 
-    .ticker{
-      margin-top:20px;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 16px;
-      border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      font-weight:800;
-      color:var(--gold);
-    }
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.5;
+}
 
-    .section{padding:34px 0}
-    .section-title{
-      margin:0 0 12px;
-      font-size:clamp(28px,4vw,46px);
-      letter-spacing:-1px;
-    }
-    .section-sub{
-      margin:0 0 24px;
-      color:var(--muted);
-      font-size:17px;
-      line-height:1.7;
-      max-width:760px;
-    }
+/* MOBILE */
+@media(max-width: 600px) {
+  .hero h1 {
+    font-size: 50px;
+  }
 
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .card{
-      padding:22px;
-      border-radius:24px;
-      background:var(--panel);
-      border:1px solid var(--border);
-      backdrop-filter:blur(10px);
-      box-shadow:var(--shadow);
-    }
-
-    .card h3{
-      margin:0 0 12px;
-      font-size:20px;
-    }
-
-    .card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.65;
-    }
-
-    .two-col{
-      display:grid;
-      grid-template-columns:.95fr 1.05fr;
-      gap:24px;
-      align-items:start;
-    }
-
-    .token-list,
-    .roadmap{
-      display:grid;
-      gap:14px;
-    }
-
-    .token-item,
-    .road-step{
-      padding:16px 18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .token-item{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:flex-start;
-    }
-
-    .token-item strong{
-      font-size:16px;
-    }
-
-    .token-item span{
-      display:block;
-      color:var(--muted);
-      font-size:14px;
-      margin-top:5px;
-    }
-
-    .road-step{
-      display:flex;
-      gap:14px;
-    }
-
-    .road-num{
-      width:42px;
-      height:42px;
-      min-width:42px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-weight:800;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-    }
-
-    .road-step h4{
-      margin:2px 0 8px;
-      font-size:18px;
-    }
-
-    .road-step p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .ca-box{
-      margin-top:16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      align-items:center;
-    }
-
-    .ca-pill{
-      padding:12px 16px;
-      border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-      font-size:14px;
-      overflow-wrap:anywhere;
-    }
-
-    .cta{
-      margin:30px 0 60px;
-      padding:30px;
-      border-radius:30px;
-      text-align:center;
-      background:
-        linear-gradient(135deg, rgba(255,77,141,.16), rgba(123,97,255,.16)),
-        rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:var(--shadow);
-    }
-
-    .cta h2{
-      margin:0 0 10px;
-      font-size:clamp(28px,4vw,48px);
-      letter-spacing:-1px;
-    }
-
-    .cta p{
-      max-width:760px;
-      margin:0 auto 20px;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    .footer{
-      padding:10px 0 38px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    @media (max-width:980px){
-      .hero-grid,
-      .grid-3,
-      .two-col{
-        grid-template-columns:1fr;
-      }
-      .hero-card{min-height:unset}
-      .hero{padding-top:42px}
-    }
-
-    @media (max-width:640px){
-      .nav-inner{flex-direction:column;align-items:flex-start}
-      .hero-actions{flex-direction:column}
-      .btn{width:100%}
-      .sub{font-size:16px}
-    }
-  </style>
+  .token-box {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
+
 <body>
-  <nav class="nav">
-    <div class="wrap nav-inner">
-      <div class="brand">
-        <div class="brand-mark">💋</div>
-        <div>GhisLame MaxWelle</div>
-      </div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#tokenomics">Tokenomics</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#contract">Contract</a>
-      </div>
-    </div>
-  </nav>
 
-  <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">⚡ Solana Meme Coin • Professional Landing Page • Built for Visibility</div>
+<nav>
+  <div class="logo">EL PERRO</div>
+  <div>
+    <a href="#">About</a>
+    <a href="#">Token</a>
+    <a href="#">Join</a>
+  </div>
+</nav>
 
-          <h1>
-            GhisLame
-            <span class="headline-accent">MaxWelle</span>
-          </h1>
+<section class="hero">
+  <h1>EL PERRO</h1>
+  <p>The dog from the light.</p>
 
-          <p class="sub">
-            A high-attention meme coin built around unforgettable branding, sharp visuals,
-            and pure internet chaos. No fake utility. No corporate nonsense. Just a clean,
-            professional launch page with cursed energy and serious meme potential.
-          </p>
+  <!-- YOUR IMAGE -->
+  <div class="hero-img-container">
+    <img src="penny-glow.jpg" class="hero-img">
+  </div>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contract">View Contract</a>
-            <a class="btn btn-secondary" href="#tokenomics">Read Tokenomics</a>
-          </div>
+  <div class="buttons">
+    <a href="#" class="btn btn-primary">Buy</a>
+    <a href="#" class="btn btn-secondary">Chart</a>
+    <a href="#" class="btn btn-secondary">Telegram</a>
+  </div>
+</section>
 
-          <div class="hero-stats">
-            <div class="stat">
-              <div class="label">Ticker</div>
-              <div class="value">$GLMW</div>
-            </div>
-            <div class="stat">
-              <div class="label">Chain</div>
-              <div class="value">Solana</div>
-            </div>
-            <div class="stat">
-              <div class="label">Category</div>
-              <div class="value">Meme Coin</div>
-            </div>
-            <div class="stat">
-              <div class="label">Launch Type</div>
-              <div class="value">Community Driven</div>
-            </div>
-          </div>
-        </div>
+<section class="section">
+  <h2>About</h2>
+  <p>
+    While everyone chased the cat…  
+    something else was watching.  
+    Calm. Patient. Glowing.  
+    El Perro has arrived.
+  </p>
+</section>
 
-        <div class="hero-card">
-          <div class="coin-frame">
-            <img class="coin-image" src="ghis.jpg.PNG" alt="GhisLame MaxWelle" />
-            <div class="ticker">💀 $GLMW • GhisLame MaxWelle</div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="section">
+  <h2>Tokenomics</h2>
 
-    <section id="about" class="section">
-      <div class="wrap">
-        <h2 class="section-title">About the project</h2>
-        <p class="section-sub">
-          GhisLame MaxWelle is designed as a pure meme-first asset with a strong visual identity,
-          recognizable character art, and a polished presentation layer. The goal is simple:
-          create a coin people instantly remember, screenshot, and share.
-        </p>
+  <div class="token-box">
+    <div class="token-item">Name: El Perro</div>
+    <div class="token-item">Ticker: $PERRO</div>
+    <div class="token-item">Supply: 1B</div>
+    <div class="token-item">Tax: 0/0</div>
+  </div>
+</section>
 
-        <div class="grid-3">
-          <div class="card">
-            <h3>Recognizable Branding</h3>
-            <p>
-              A memorable character, a twisted name, and a visual identity that stands out
-              instantly across listings, screenshots, and social posts.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Clean Presentation</h3>
-            <p>
-              Built to look polished and intentional. Strong first impressions matter, and this
-              page is designed to feel sharp, fast, and launch-ready.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Meme-First Concept</h3>
-            <p>
-              This project embraces what actually drives attention online: visual shock value,
-              cursed humor, replayability, and easy recognition.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+<footer>
+  © 2026 El Perro
+</footer>
 
-    <section id="tokenomics" class="section">
-      <div class="wrap two-col">
-        <div class="card">
-          <h2 class="section-title">Tokenomics</h2>
-          <p class="section-sub">
-            Simple, direct, and easy to understand.
-          </p>
-
-          <div class="token-list">
-            <div class="token-item">
-              <div>
-                <strong>Total Supply</strong>
-                <span>Fixed meme supply</span>
-              </div>
-              <div><strong>1,000,000,000</strong></div>
-            </div>
-
-            <div class="token-item">
-              <div>
-                <strong>Liquidity</strong>
-                <span>Market launch liquidity</span>
-              </div>
-              <div><strong>Launch Based</strong></div>
-            </div>
-
-            <div class="token-item">
-              <div>
-                <strong>Taxes</strong>
-                <span>Clean setup</span>
-              </div>
-              <div><strong>0 / 0</strong></div>
-            </div>
-
-            <div class="token-item">
-              <div>
-                <strong>Utility</strong>
-                <span>Meme and community</span>
-              </div>
-              <div><strong>None</strong></div>
-            </div>
-          </div>
-        </div>
-
-        <div id="roadmap" class="card">
-          <h2 class="section-title">Roadmap</h2>
-          <p class="section-sub">
-            Straightforward launch structure.
-          </p>
-
-          <div class="roadmap">
-            <div class="road-step">
-              <div class="road-num">1</div>
-              <div>
-                <h4>Brand establishment</h4>
-                <p>Launch the site, lock the visual identity, and make the project instantly recognizable.</p>
-              </div>
-            </div>
-
-            <div class="road-step">
-              <div class="road-num">2</div>
-              <div>
-                <h4>Community attention</h4>
-                <p>Drive impressions with strong art, memorable naming, and consistent presentation.</p>
-              </div>
-            </div>
-
-            <div class="road-step">
-              <div class="road-num">3</div>
-              <div>
-                <h4>Market expansion</h4>
-                <p>Use polished listings, banners, and assets to support stronger visibility across platforms.</p>
-              </div>
-            </div>
-
-            <div class="road-step">
-              <div class="road-num">4</div>
-              <div>
-                <h4>Momentum or extinction</h4>
-                <p>No false promises. The market decides what lives and what disappears.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contract" class="section">
-      <div class="wrap">
-        <div class="cta">
-          <h2>Contract Information</h2>
-          <p>
-            Add your final contract address below once live. This section is kept simple and professional
-            so the page remains clean, credible, and easy to use.
-          </p>
-
-          <div class="ca-box" style="justify-content:center;">
-            <div class="ca-pill" id="caText">CA: Paste contract address here</div>
-            <button class="btn btn-secondary" id="copyBtn" type="button">Copy CA</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer wrap">
-    © 2026 GhisLame MaxWelle • All rights reserved.
-  </footer>
-
-  <script>
-    const copyBtn = document.getElementById('copyBtn');
-    const caText = document.getElementById('caText');
-
-    copyBtn.addEventListener('click', async () => {
-      const text = caText.textContent.replace('CA:', '').trim();
-      if (!text || text.toLowerCase().includes('paste contract')) {
-        alert('Add your contract address first.');
-        return;
-      }
-      try {
-        await navigator.clipboard.writeText(text);
-        copyBtn.textContent = 'Copied';
-        setTimeout(() => copyBtn.textContent = 'Copy CA', 1400);
-      } catch (e) {
-        alert('Could not copy. Please copy manually.');
-      }
-    });
-  </script>
 </body>
 </html>
