@@ -8,28 +8,54 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, Helvetica, sans-serif;
   background: #0a0a0a;
   color: white;
   text-align: center;
 }
 
+/* HERO */
+.hero {
+  padding: 80px 20px;
+}
+
 /* TITLE */
 h1 {
-  font-size: 70px;
-  margin-top: 40px;
+  font-size: 72px;
   color: #ffd86b;
+  margin-bottom: 10px;
+  text-shadow: 0 0 25px rgba(255,200,80,0.4);
+}
+
+p {
+  opacity: 0.7;
 }
 
 /* IMAGE */
+.image-box {
+  margin: 60px auto;
+  width: 360px;
+  position: relative;
+}
+
+.image-box::before {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  background: radial-gradient(circle, rgba(255,200,80,0.5), transparent);
+  filter: blur(70px);
+  z-index: 0;
+}
+
 img {
-  width: 300px;
-  margin-top: 40px;
-  border-radius: 20px;
+  width: 100%;
+  border-radius: 22px;
+  position: relative;
+  z-index: 2;
 
   box-shadow:
-    0 0 40px rgba(255,200,80,0.6),
-    0 0 100px rgba(255,200,80,0.3);
+    0 0 40px rgba(255,200,80,0.5),
+    0 0 120px rgba(255,200,80,0.25);
 }
 
 /* BUTTONS */
@@ -37,10 +63,10 @@ img {
   margin-top: 40px;
 }
 
-a {
+.btn {
   display: inline-block;
   margin: 10px;
-  padding: 14px 20px;
+  padding: 14px 24px;
   border-radius: 999px;
   text-decoration: none;
   font-weight: bold;
@@ -55,31 +81,43 @@ a {
   border: 1px solid #ffd86b;
   color: #ffd86b;
 }
+
+/* FOOTER */
+footer {
+  margin-top: 80px;
+  opacity: 0.5;
+}
 </style>
 </head>
 
 <body>
 
-<h1>EL PERRO</h1>
-<p>The dog from the light</p>
+<div class="hero">
 
-<!-- IMAGE -->
-<img src="./penny-glow.jpg" alt="El Perro">
+  <h1>EL PERRO</h1>
+  <p>The dog from the light</p>
 
-<!-- BUTTONS -->
-<div class="buttons">
+  <!-- IMAGE (PNG FIXED) -->
+  <div class="image-box">
+    <img src="penny.png" alt="El Perro">
+  </div>
 
-  <!-- PUMP LINK -->
-  <a class="buy" href="https://pump.fun" target="_blank">
-    Buy $PERRO
-  </a>
+  <!-- LINKS -->
+  <div class="buttons">
+    <a class="btn buy" href="https://pump.fun" target="_blank">
+      Buy $PERRO
+    </a>
 
-  <!-- X COMMUNITY -->
-  <a class="link" href="https://x.com/i/communities/2033636692662391218" target="_blank">
-    X Community
-  </a>
+    <a class="btn link" href="https://x.com/i/communities/2033636692662391218" target="_blank">
+      X Community
+    </a>
+  </div>
 
 </div>
+
+<footer>
+  © El Perro
+</footer>
 
 </body>
 </html>
