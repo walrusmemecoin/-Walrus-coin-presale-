@@ -6,238 +6,80 @@
 <title>El Perro</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: radial-gradient(circle at top, #1a1405, #050403);
-  color: #fff;
-  overflow-x: hidden;
-}
-
-/* BACKGROUND GLOW */
-body::before {
-  content: "";
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,200,80,0.25), transparent);
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  filter: blur(80px);
-  z-index: 0;
-}
-
-/* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 8%;
-  position: relative;
-  z-index: 2;
-}
-
-.logo {
-  font-weight: 900;
-  font-size: 24px;
-  color: #ffd86b;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 20px;
-  opacity: 0.8;
-}
-
-nav a:hover {
-  opacity: 1;
-}
-
-/* HERO */
-.hero {
+  margin: 0;
+  font-family: Arial;
+  background: #0a0a0a;
+  color: white;
   text-align: center;
-  padding: 60px 20px 40px;
-  position: relative;
-  z-index: 2;
 }
 
-.hero h1 {
-  font-size: 80px;
+/* TITLE */
+h1 {
+  font-size: 70px;
+  margin-top: 40px;
   color: #ffd86b;
-  text-shadow: 0 0 25px rgba(255,200,80,0.5);
-}
-
-.hero p {
-  margin-top: 10px;
-  opacity: 0.8;
 }
 
 /* IMAGE */
-.hero-img-container {
-  margin: 50px auto;
-  width: 320px;
-  position: relative;
-}
-
-.hero-img-container::before {
-  content: "";
-  position: absolute;
-  inset: -40px;
-  background: radial-gradient(circle, rgba(255,200,80,0.4), transparent 70%);
-  filter: blur(60px);
-  z-index: 0;
-}
-
-.hero-img {
-  width: 100%;
+img {
+  width: 300px;
+  margin-top: 40px;
   border-radius: 20px;
-  position: relative;
-  z-index: 1;
 
   box-shadow:
-    0 0 40px rgba(255,200,80,0.4),
-    0 0 100px rgba(255,200,80,0.2);
-
-  transition: 0.3s;
-}
-
-.hero-img:hover {
-  transform: scale(1.05);
+    0 0 40px rgba(255,200,80,0.6),
+    0 0 100px rgba(255,200,80,0.3);
 }
 
 /* BUTTONS */
 .buttons {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
-.btn {
+a {
   display: inline-block;
   margin: 10px;
-  padding: 12px 20px;
+  padding: 14px 20px;
   border-radius: 999px;
   text-decoration: none;
   font-weight: bold;
 }
 
-.btn-primary {
+.buy {
   background: #ffd86b;
-  color: #000;
+  color: black;
 }
 
-.btn-secondary {
+.link {
   border: 1px solid #ffd86b;
   color: #ffd86b;
-}
-
-/* SECTION */
-.section {
-  padding: 80px 10%;
-  text-align: center;
-}
-
-.section h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #ffd86b;
-}
-
-.section p {
-  max-width: 600px;
-  margin: auto;
-  opacity: 0.8;
-}
-
-/* TOKENOMICS */
-.token-box {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.token-item {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 15px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  opacity: 0.5;
-}
-
-/* MOBILE */
-@media(max-width: 600px) {
-  .hero h1 {
-    font-size: 50px;
-  }
-
-  .token-box {
-    grid-template-columns: 1fr;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">EL PERRO</div>
-  <div>
-    <a href="#">About</a>
-    <a href="#">Token</a>
-    <a href="#">Join</a>
-  </div>
-</nav>
+<h1>EL PERRO</h1>
+<p>The dog from the light</p>
 
-<section class="hero">
-  <h1>EL PERRO</h1>
-  <p>The dog from the light.</p>
+<!-- IMAGE -->
+<img src="./penny-glow.jpg" alt="El Perro">
 
-  <!-- YOUR IMAGE -->
-  <div class="hero-img-container">
-    <img src="penny-glow.jpg" class="hero-img">
-  </div>
+<!-- BUTTONS -->
+<div class="buttons">
 
-  <div class="buttons">
-    <a href="#" class="btn btn-primary">Buy</a>
-    <a href="#" class="btn btn-secondary">Chart</a>
-    <a href="#" class="btn btn-secondary">Telegram</a>
-  </div>
-</section>
+  <!-- PUMP LINK -->
+  <a class="buy" href="https://pump.fun" target="_blank">
+    Buy $PERRO
+  </a>
 
-<section class="section">
-  <h2>About</h2>
-  <p>
-    While everyone chased the cat…  
-    something else was watching.  
-    Calm. Patient. Glowing.  
-    El Perro has arrived.
-  </p>
-</section>
+  <!-- X COMMUNITY -->
+  <a class="link" href="https://x.com/i/communities/2033636692662391218" target="_blank">
+    X Community
+  </a>
 
-<section class="section">
-  <h2>Tokenomics</h2>
-
-  <div class="token-box">
-    <div class="token-item">Name: El Perro</div>
-    <div class="token-item">Ticker: $PERRO</div>
-    <div class="token-item">Supply: 1B</div>
-    <div class="token-item">Tax: 0/0</div>
-  </div>
-</section>
-
-<footer>
-  © 2026 El Perro
-</footer>
+</div>
 
 </body>
 </html>
