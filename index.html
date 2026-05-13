@@ -1,122 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Perro</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troller Coaster</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #080014;
+      color: white;
+    }
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0a0a0a;
-  color: white;
-  text-align: center;
-}
+    header {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(8,0,20,.15), #080014),
+        url("IMG_1686.jpeg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
 
-/* HERO */
-.hero {
-  padding: 80px 20px;
-}
+    header h1 {
+      font-size: 72px;
+      margin: 0;
+      background: linear-gradient(90deg, #14f1ff, #a855ff, #ff5ee7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
 
-/* TITLE */
-h1 {
-  font-size: 72px;
-  color: #ffd86b;
-  margin-bottom: 10px;
-  text-shadow: 0 0 25px rgba(255,200,80,0.4);
-}
+    header p {
+      font-size: 22px;
+      max-width: 780px;
+      margin: 20px auto;
+      color: #eee;
+    }
 
-p {
-  opacity: 0.7;
-}
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #14f1ff, #a855ff);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-/* IMAGE */
-.image-box {
-  margin: 60px auto;
-  width: 360px;
-  position: relative;
-}
+    section {
+      padding: 70px 10%;
+    }
 
-.image-box::before {
-  content: "";
-  position: absolute;
-  inset: -50px;
-  background: radial-gradient(circle, rgba(255,200,80,0.5), transparent);
-  filter: blur(70px);
-  z-index: 0;
-}
+    h2 {
+      font-size: 42px;
+      color: #14f1ff;
+      margin-bottom: 20px;
+    }
 
-img {
-  width: 100%;
-  border-radius: 22px;
-  position: relative;
-  z-index: 2;
+    .card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 20px;
+      padding: 28px;
+      margin: 20px 0;
+      box-shadow: 0 0 30px rgba(168,85,255,.15);
+    }
 
-  box-shadow:
-    0 0 40px rgba(255,200,80,0.5),
-    0 0 120px rgba(255,200,80,0.25);
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
 
-/* BUTTONS */
-.buttons {
-  margin-top: 40px;
-}
+    .phase {
+      border-left: 4px solid #a855ff;
+    }
 
-.btn {
-  display: inline-block;
-  margin: 10px;
-  padding: 14px 24px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.buy {
-  background: #ffd86b;
-  color: black;
-}
-
-.link {
-  border: 1px solid #ffd86b;
-  color: #ffd86b;
-}
-
-/* FOOTER */
-footer {
-  margin-top: 80px;
-  opacity: 0.5;
-}
-</style>
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #aaa;
+      background: #05000d;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="hero">
+<header>
+  <div>
+    <h1>Troller Coaster</h1>
+    <p>
+      Welcome to the wildest ride in the trenches. Troller Coaster is a meme-powered community coin built around chaos, culture, and the unstoppable energy of trolls riding every pump, dip, and moonshot together.
+    </p>
+    <a href="#roadmap" class="btn">Roadmap</a>
+    <a href="#whitepaper" class="btn">Whitepaper</a>
+  </div>
+</header>
 
-  <h1>EL PERRO</h1>
-  <p>The dog from the light</p>
+<section id="about">
+  <h2>About Troller Coaster</h2>
+  <div class="card">
+    <p>
+      Troller Coaster is more than a meme — it is a full community-driven movement built for traders who understand the ride. Markets go up, markets go down, but real trolls stay strapped in.
+    </p>
+    <p>
+      The brand combines roller-coaster volatility, troll meme culture, Solana-style speed, and a highly shareable visual identity designed for X, Telegram, livestreams, and viral meme campaigns.
+    </p>
+  </div>
+</section>
 
-  <!-- IMAGE (PNG FIXED) -->
-  <div class="image-box">
-    <img src="penny.png" alt="El Perro">
+<section id="roadmap">
+  <h2>Roadmap</h2>
+  <div class="grid">
+    <div class="card phase">
+      <h3>Phase 1 — Launch the Ride</h3>
+      <p>Token launch, website release, community setup, meme rollout, Telegram/X activation, and early holder onboarding.</p>
+    </div>
+
+    <div class="card phase">
+      <h3>Phase 2 — Build the Tracks</h3>
+      <p>Consistent meme drops, livestream marketing, community raids, creator partnerships, and holder-based growth campaigns.</p>
+    </div>
+
+    <div class="card phase">
+      <h3>Phase 3 — Full Send</h3>
+      <p>DEX Screener updates, trending pushes, larger marketing campaigns, influencer outreach, and stronger community expansion.</p>
+    </div>
+
+    <div class="card phase">
+      <h3>Phase 4 — Troller Empire</h3>
+      <p>Merch concepts, NFT-style collectibles, community contests, long-term brand expansion, and continued meme dominance.</p>
+    </div>
+  </div>
+</section>
+
+<section id="whitepaper">
+  <h2>Whitepaper</h2>
+
+  <div class="card">
+    <h3>Mission</h3>
+    <p>
+      Troller Coaster exists to create a fun, recognizable, and community-powered meme coin brand that captures the emotional chaos of crypto trading. Every holder is part of the ride.
+    </p>
   </div>
 
-  <!-- LINKS -->
-  <div class="buttons">
-    <a class="btn buy" href="https://pump.fun" target="_blank">
-      Buy $PERRO
-    </a>
-
-    <a class="btn link" href="https://x.com/i/communities/2033636692662391218" target="_blank">
-      X Community
-    </a>
+  <div class="card">
+    <h3>Vision</h3>
+    <p>
+      The goal is to build a viral meme ecosystem where the community drives attention, creates content, raids together, and turns Troller Coaster into a recognizable name across Solana meme culture.
+    </p>
   </div>
 
-</div>
+  <div class="card">
+    <h3>Community Strategy</h3>
+    <p>
+      Growth will focus on X, Telegram, livestreams, meme contests, short-form videos, and raid-based marketing. The strongest meme coins are not built by one wallet — they are built by culture.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Brand Identity</h3>
+    <p>
+      Troller Coaster represents volatility, humor, chaos, and conviction. The trolls are not afraid of dips. They laugh through the loops and ride toward the next leg up.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Disclaimer</h3>
+    <p>
+      Troller Coaster is a meme coin and entertainment-based community project. Nothing on this website is financial advice. Crypto is risky, and users should always do their own research.
+    </p>
+  </div>
+</section>
 
 <footer>
-  © El Perro
+  <p>© 2026 Troller Coaster. Ride the meme. Hold the track.</p>
 </footer>
 
 </body>
